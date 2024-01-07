@@ -41,6 +41,8 @@ pnpm ios
 pnpm android
 ```
 
+## Sentry (real-time updates on errors)
+
 ## 🌐 Environment Variables
 
 1. Create a `.env` file in the root of the project.

@@ -21,6 +21,17 @@ module.exports = {
     },
     mode: 'production',
     assetBundlePatterns: ['**/*'],
+    hooks: {
+      postPublish: [
+        {
+          "file": "sentry-expo/upload-sourcemaps",
+          "config": {
+            "organization": "sentry org slug, or use the `SENTRY_ORG` environment variable",
+            "project": "sentry project name, or use the `SENTRY_PROJECT` environment variable"
+          }
+        }
+      ]
+    },
     ios: {
       supportsTablet: true,
       bundleIdentifier: 'com.zoltanfodor.test-expo-router-now'
@@ -57,6 +68,9 @@ module.exports = {
     plugins: [
       [
         'expo-router',
+      ],
+      [
+        'sentry-expo',
       ]
     ],
     extra: {
