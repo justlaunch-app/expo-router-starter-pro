@@ -1,11 +1,11 @@
 module.exports = {
   expo: {
-    name: 'justlaunch.app - expo-router-starter-kit',
+    name: 'justlaunch.app - expo-router-pro-starter',
     experiments: {
       typedRoutes: true,
       tsconfigPaths: true,
     },
-    slug: 'expo-starter-kit',
+    slug: 'expo-router-pro-starter',
     version: '1.7.0',
     orientation: 'portrait',
     icon: './public/favicon-32x32.png',
