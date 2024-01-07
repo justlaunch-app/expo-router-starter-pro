@@ -68,9 +68,6 @@ module.exports = {
     plugins: [
       [
         'expo-router',
-      ],
-      [
-        'sentry-expo',
       ]
     ],
     extra: {
