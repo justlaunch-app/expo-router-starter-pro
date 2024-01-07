@@ -20,13 +20,13 @@
           "out"
         ],
         "releaseNotes": "Add some release note HERE",
-        "marketingUrl": "https://expo-starter-kit.vercel.app/",
+        "marketingUrl": "https://expo-router-pro-starter.vercel.app/",
         "promoText": "Build universal apps with expo-router-starter-kit",
         "supportUrl": "https://github.com/ritmillio/expo-router-starter-kit/issues",
         "title": "Expo Router Starter Kit",
         "subtitle": "Build MVP REALLY FAST",
-        "privacyPolicyUrl": "https://expo-starter-kit.vercel.app/privacy",
-        "privacyChoicesUrl": "https://expo-starter-kit.vercel.app/privacy"
+        "privacyPolicyUrl": "https://expo-router-pro-starter.vercel.app/privacy",
+        "privacyChoicesUrl": "https://expo-router-pro-starter.vercel.app/privacy"
       }
     },
     "categories": [["GAMES", "GAMES_CASUAL", "GAMES_FAMILY"], "ENTERTAINMENT"],

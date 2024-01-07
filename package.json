@@ -74,7 +74,7 @@
   "overrides": {
     "react-refresh": "~0.14.0"
   },
-  "name": "expo-starter-kit",
+  "name": "expo-router-pro-starter",
   "version": "1.0.0",
   "private": false,
   "description": "An opinionated Expo starter with expo-router, nativewind, zustand, expo-image, @shopify/flash-list",

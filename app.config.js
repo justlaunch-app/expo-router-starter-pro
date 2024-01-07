@@ -6,7 +6,7 @@ module.exports = {
       tsconfigPaths: true,
     },
     slug: 'expo-router-pro-starter',
-    version: '1.7.0',
+    version: '1.0.0',
     orientation: 'portrait',
     icon: './public/favicon-32x32.png',
     scheme: 'acme',
@@ -75,8 +75,8 @@ module.exports = {
     ],
     extra: {
       eas: {
-        projectId: 'c5cddb1a-4054-45f3-8212-36a4c9482807',
-      },
+        projectId: "cf2342ee-ad1a-4d42-a8ad-2ddde7172fa6"
+      }
     },
   },
 };

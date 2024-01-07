@@ -6,7 +6,7 @@
     "feed": "Feed",
     "home": "Home"
   },
-  "greeting": "🚀 expo-starter-kit 🚀",
+  "greeting": "🚀 expo-router-pro-starter 🚀",
   "auth": {
     "errors": {
       "password-invalid": "Password should includes at least 8 characters!",
