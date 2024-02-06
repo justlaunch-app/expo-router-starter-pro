@@ -71,6 +71,7 @@ module.exports = {
       ]
     ],
     extra: {
+      clerkPublishableKey: process.env.CLERK_PUBLISHABLE_KEY,
       eas: {
         projectId: "cf2342ee-ad1a-4d42-a8ad-2ddde7172fa6"
       }

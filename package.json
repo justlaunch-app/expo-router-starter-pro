@@ -8,6 +8,7 @@
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@clerk/clerk-expo": "^0.20.3",
     "@expo/cli": "^0.10.11",
     "@expo/vector-icons": "^14.0.0",
     "@hookform/resolvers": "^3.2.0",
