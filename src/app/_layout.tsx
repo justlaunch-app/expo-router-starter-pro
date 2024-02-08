@@ -1,7 +1,12 @@
-import { useEffect } from 'react';
+import { useEffect, useLayoutEffect, useMemo } from 'react';
 import { useFonts } from 'expo-font';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Stack } from 'expo-router';
+import {
+  Stack,
+  useRootNavigationState,
+  useSegments,
+  router,
+} from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import {
   ThemeProvider,
@@ -13,6 +18,7 @@ import { StatusBar } from 'expo-status-bar';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import i18n from '@locales/i18n';
 import { useColorScheme } from 'nativewind';
+import { useAuth } from 'src/store/authStore/auth.store';
 import '../../global.css';
 
 export { ErrorBoundary } from 'expo-router';
@@ -25,11 +31,38 @@ export const unstable_settings = {
 
 SplashScreen.preventAutoHideAsync();
 
+function useProtectedRoute() {
+  const segments = useSegments();
+  const rootNavigationState = useRootNavigationState();
+
+  const user = useAuth(({ user }) => user);
+
+  const navigationKey = useMemo(() => {
+    return rootNavigationState?.key;
+  }, [rootNavigationState]);
+
+  useLayoutEffect(() => {
+    const inAuthGroup = segments[0] === '(auth)';
+
+    if (!navigationKey) {
+      return;
+    }
+
+    if (!user && !inAuthGroup) {
+      router.replace('/sign-in');
+    } else if (user && inAuthGroup) {
+      router.replace('/');
+    }
+  }, [user, segments, navigationKey]);
+}
+
 export default function RootLayout() {
   const [loaded, error] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
     ...FontAwesome.font,
   });
+
+  useProtectedRoute();
 
   useEffect(() => {
     if (error) throw error;

@@ -22,7 +22,8 @@
       "@layouts/*": ["src/layouts/*"],
       "@config/*": ["src/config/*"],
       "@srcTypes/*": ["src/types/*"],
-      "@hooks/*": ["src/hooks/*"]
+      "@hooks/*": ["src/hooks/*"],
+      "@schemas/*": ["src/schemas/*"]
     }
   }
 }
