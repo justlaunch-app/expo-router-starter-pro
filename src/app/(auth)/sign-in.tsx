@@ -79,6 +79,7 @@
 import React from 'react';
 import { Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { useSignIn, SignedIn, SignedOut } from '@clerk/clerk-expo';
+import SignInWithOAuth from '@components/OAuth/SignInWithOAuth';
 
 export default function SignInScreen() {
   const { signIn, setActive, isLoaded } = useSignIn();
@@ -112,6 +113,7 @@ export default function SignInScreen() {
       </SignedIn>
       <SignedOut>
         <Text>You are Signed out</Text>
+        <SignInWithOAuth />
       </SignedOut>
       <View>
         <TextInput
