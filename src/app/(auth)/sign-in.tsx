@@ -78,7 +78,13 @@
 // }
 import React from 'react';
 import { Text, TextInput, TouchableOpacity, View, Button } from 'react-native';
-import { useSignIn, SignedIn, SignedOut, useAuth } from '@clerk/clerk-expo';
+import {
+  useSignIn,
+  SignedIn,
+  SignedOut,
+  useAuth,
+  useUser,
+} from '@clerk/clerk-expo';
 import SignInWithOAuth from '@components/OAuth/SignInWithOAuth';
 
 const SignOut = () => {
@@ -100,6 +106,8 @@ const SignOut = () => {
 
 export default function SignInScreen() {
   const { signIn, setActive, isLoaded } = useSignIn();
+
+  const { user } = useUser();
 
   const [emailAddress, setEmailAddress] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -123,6 +131,7 @@ export default function SignInScreen() {
       console.error(JSON.stringify(err, null, 2));
     }
   };
+  console.log('user', user);
   return (
     <View>
       <SignedIn>
@@ -133,6 +142,7 @@ export default function SignInScreen() {
         <SignInWithOAuth />
       </SignedOut>
       <SignOut />
+      <Text className="text-black dark:text-white">{user?.getSessions}</Text>
       <View>
         <TextInput
           className="dark:text-white text-black"
@@ -142,7 +152,6 @@ export default function SignInScreen() {
           onChangeText={(emailAddress) => setEmailAddress(emailAddress)}
         />
       </View>
-
       <View>
         <TextInput
           className="dark:text-white text-black"
