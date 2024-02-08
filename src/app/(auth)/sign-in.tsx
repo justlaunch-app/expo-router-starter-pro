@@ -77,9 +77,26 @@
 //   );
 // }
 import React from 'react';
-import { Text, TextInput, TouchableOpacity, View } from 'react-native';
-import { useSignIn, SignedIn, SignedOut } from '@clerk/clerk-expo';
+import { Text, TextInput, TouchableOpacity, View, Button } from 'react-native';
+import { useSignIn, SignedIn, SignedOut, useAuth } from '@clerk/clerk-expo';
 import SignInWithOAuth from '@components/OAuth/SignInWithOAuth';
+
+const SignOut = () => {
+  const { isLoaded, signOut } = useAuth();
+  if (!isLoaded) {
+    return null;
+  }
+  return (
+    <View>
+      <Button
+        title="Sign Out"
+        onPress={() => {
+          signOut();
+        }}
+      />
+    </View>
+  );
+};
 
 export default function SignInScreen() {
   const { signIn, setActive, isLoaded } = useSignIn();
@@ -115,8 +132,10 @@ export default function SignInScreen() {
         <Text>You are Signed out</Text>
         <SignInWithOAuth />
       </SignedOut>
+      <SignOut />
       <View>
         <TextInput
+          className="dark:text-white text-black"
           autoCapitalize="none"
           value={emailAddress}
           placeholder="Email..."
@@ -126,6 +145,7 @@ export default function SignInScreen() {
 
       <View>
         <TextInput
+          className="dark:text-white text-black"
           value={password}
           placeholder="Password..."
           secureTextEntry={true}
@@ -134,7 +154,7 @@ export default function SignInScreen() {
       </View>
 
       <TouchableOpacity onPress={onSignInPress}>
-        <Text>Sign in</Text>
+        <Text className="dark:text-white text-black">Sign in</Text>
       </TouchableOpacity>
     </View>
   );
