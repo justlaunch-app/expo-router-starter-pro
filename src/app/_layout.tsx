@@ -22,6 +22,8 @@ import { useAuth } from 'src/store/authStore/auth.store';
 import '../../global.css';
 
 import { ClerkProvider } from '@clerk/clerk-expo';
+import * as SecureStore from 'expo-secure-store';
+
 export { ErrorBoundary } from 'expo-router';
 
 const queryClient = new QueryClient();
@@ -31,6 +33,24 @@ export const unstable_settings = {
 };
 
 SplashScreen.preventAutoHideAsync();
+
+//Clerk Auth JWT Token Cache
+const tokenCache = {
+  async getToken(key: string) {
+    try {
+      return SecureStore.getItemAsync(key);
+    } catch (err) {
+      return null;
+    }
+  },
+  async saveToken(key: string, value: string) {
+    try {
+      return SecureStore.setItemAsync(key, value);
+    } catch (err) {
+      return;
+    }
+  },
+};
 
 function useProtectedRoute() {
   const segments = useSegments();
@@ -86,7 +106,10 @@ function RootLayoutNav() {
   const { colorScheme } = useColorScheme();
 
   return (
-    <ClerkProvider publishableKey="pk_test_Zm9uZC1ld2UtMy5jbGVyay5hY2NvdW50cy5kZXYk">
+    <ClerkProvider
+      tokenCache={tokenCache}
+      publishableKey="pk_test_Zm9uZC1ld2UtMy5jbGVyay5hY2NvdW50cy5kZXYk"
+    >
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <I18nextProvider i18n={i18n}>
           <QueryClientProvider client={queryClient}>
