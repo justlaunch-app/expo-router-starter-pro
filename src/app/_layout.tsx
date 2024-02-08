@@ -21,6 +21,7 @@ import { useColorScheme } from 'nativewind';
 import { useAuth } from 'src/store/authStore/auth.store';
 import '../../global.css';
 
+import { ClerkProvider } from '@clerk/clerk-expo';
 export { ErrorBoundary } from 'expo-router';
 
 const queryClient = new QueryClient();
@@ -85,21 +86,23 @@ function RootLayoutNav() {
   const { colorScheme } = useColorScheme();
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <I18nextProvider i18n={i18n}>
-        <QueryClientProvider client={queryClient}>
-          <Stack>
-            <Stack.Screen name="(root)" options={{ headerShown: false }} />
-            <Stack.Screen
-              name="modal"
-              options={{
-                presentation: 'modal',
-              }}
-            />
-          </Stack>
-          <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
-        </QueryClientProvider>
-      </I18nextProvider>
-    </ThemeProvider>
+    <ClerkProvider publishableKey="pk_test_Zm9uZC1ld2UtMy5jbGVyay5hY2NvdW50cy5kZXYk">
+      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+        <I18nextProvider i18n={i18n}>
+          <QueryClientProvider client={queryClient}>
+            <Stack>
+              <Stack.Screen name="(root)" options={{ headerShown: false }} />
+              <Stack.Screen
+                name="modal"
+                options={{
+                  presentation: 'modal',
+                }}
+              />
+            </Stack>
+            <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
+          </QueryClientProvider>
+        </I18nextProvider>
+      </ThemeProvider>
+    </ClerkProvider>
   );
 }

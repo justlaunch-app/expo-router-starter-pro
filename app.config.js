@@ -71,6 +71,7 @@ module.exports = {
       ]
     ],
     extra: {
+      clerkPublishableKey: 'pk_test_Zm9uZC1ld2UtMy5jbGVyay5hY2NvdW50cy5kZXYk',
       eas: {
         projectId: "cf2342ee-ad1a-4d42-a8ad-2ddde7172fa6"
       }
