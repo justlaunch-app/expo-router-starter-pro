@@ -1,6 +1,8 @@
 import React from 'react';
 import * as WebBrowser from 'expo-web-browser';
 import { Button, View } from 'react-native';
+import SSOButton from './Button/SSOButton';
+import x from '../../assets/icons/x.png';
 
 // Assume `useOAuth` is a hook imported from '@clerk/clerk-expo'
 import { useOAuth } from '@clerk/clerk-expo';
@@ -38,6 +40,14 @@ const SignInWithOAuth = () => {
 
   return (
     <View>
+      <SSOButton
+        className="font-bold text-2xl"
+        logo={x}
+        backgroundColor="white"
+        textColor="black"
+        borderRadius={32}
+        text="Sign in with X"
+      />
       <Button
         title="Sign in with Google"
         onPress={() => startOAuthSignIn(googleOAuth)}
