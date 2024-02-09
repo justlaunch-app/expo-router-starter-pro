@@ -7,10 +7,9 @@ import {
   ViewStyle,
 } from 'react-native';
 import TouchableOpacity from '@components/Button/TouchableOpacity';
-import 'nativewind';
 
 interface SSOButtonProps {
-  logo: ImageSourcePropType;
+  logo: ImageSourcePropType | string;
   backgroundColor: string;
   textColor: string;
   borderRadius: number;
@@ -18,6 +17,7 @@ interface SSOButtonProps {
   height?: number;
   width?: number;
   textClasses?: string;
+  onPress: () => void;
 }
 
 const SSOButton: React.FC<SSOButtonProps> = ({
@@ -29,6 +29,7 @@ const SSOButton: React.FC<SSOButtonProps> = ({
   height = 20,
   width = 20,
   textClasses,
+  onPress,
 }) => {
   const buttonStyle: ViewStyle = {
     flexDirection: 'row',
@@ -46,7 +47,7 @@ const SSOButton: React.FC<SSOButtonProps> = ({
   };
 
   return (
-    <TouchableOpacity style={buttonStyle} onPress={() => {}}>
+    <TouchableOpacity style={buttonStyle} onPress={onPress}>
       <Image
         source={logo}
         style={{ height: height, width: width, marginRight: 8 }}
