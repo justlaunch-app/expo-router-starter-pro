@@ -6,7 +6,7 @@ type Credentials = {
 };
 
 type User = Credentials & {
-  nickname: string;
+  nickname?: string;
 };
 
 type AuthError = {
@@ -26,18 +26,11 @@ export const useAuth = create<AuthState>((set, get) => ({
   user: null,
   users: [],
   login(credentials) {
-    const user = get().users?.find((user) => user.email === credentials.email);
+    const user = credentials;
 
     if (!user) {
       return {
         error: 'auth.errors.user-does-not-exist',
-      };
-    }
-
-    const isValidPassword = user.password === credentials.password;
-    if (!isValidPassword) {
-      return {
-        error: 'auth.errors.invalid-password',
       };
     }
 
