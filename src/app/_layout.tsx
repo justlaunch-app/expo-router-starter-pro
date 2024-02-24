@@ -20,10 +20,12 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import i18n from '@locales/i18n';
 import { useColorScheme } from 'nativewind';
 import { useAuth } from 'src/store/authStore/auth.store';
+import Icon from '@components/Icon/Icon';
 import '../../global.css';
 
 import { ClerkProvider } from '@clerk/clerk-expo';
 import * as SecureStore from 'expo-secure-store';
+import PressableComponent from '@components/Button/TouchableOpacity';
 
 export { ErrorBoundary } from 'expo-router';
 

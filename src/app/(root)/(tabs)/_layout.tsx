@@ -9,7 +9,14 @@ function TabBarIcon(props: {
   color: string;
   className?: string;
 }) {
-  return <FontAwesome className={props.className} size={28} style={{ marginBottom: -3 }} {...props} />;
+  return (
+    <FontAwesome
+      className={props.className}
+      size={28}
+      style={{ marginBottom: -3 }}
+      {...props}
+    />
+  );
 }
 
 const HeaderRight = () => {
@@ -20,7 +27,7 @@ const HeaderRight = () => {
       <Pressable>
         {() => (
           <TabBarIcon
-            name="exclamation-circle"
+            name="code"
             color={colorScheme === 'dark' ? 'white' : 'black'}
             className="mr-3"
           />
@@ -45,7 +52,12 @@ export default function TabLayout() {
         name="(index)"
         options={{
           title: t('tabs.one'),
-          tabBarIcon: () => <TabBarIcon name='code' color={colorScheme === 'dark' ? 'white' : 'black'}/>,
+          tabBarIcon: () => (
+            <TabBarIcon
+              name="code"
+              color={colorScheme === 'dark' ? 'white' : 'black'}
+            />
+          ),
           headerRight: HeaderRight,
         }}
       />
@@ -53,14 +65,24 @@ export default function TabLayout() {
         name="two"
         options={{
           title: t('tabs.two'),
-          tabBarIcon: () => <TabBarIcon name='code' color={colorScheme === 'dark' ? 'white' : 'black'}/>,
+          tabBarIcon: () => (
+            <TabBarIcon
+              name="code"
+              color={colorScheme === 'dark' ? 'white' : 'black'}
+            />
+          ),
         }}
       />
       <Tabs.Screen
         name="settings"
         options={{
           title: t('tabs.settings'),
-          tabBarIcon: () => <TabBarIcon name='cog' color={colorScheme === 'dark' ? 'white' : 'black'} />,
+          tabBarIcon: () => (
+            <TabBarIcon
+              name="cog"
+              color={colorScheme === 'dark' ? 'white' : 'black'}
+            />
+          ),
         }}
       />
     </Tabs>
