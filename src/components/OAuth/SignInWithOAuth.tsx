@@ -1,9 +1,20 @@
 import { useEffect } from 'react';
 import * as WebBrowser from 'expo-web-browser';
 import { Button, View } from 'react-native';
-import { useOAuth } from '@clerk/clerk-expo';
+import {
+  useOAuth,
+  StartOAuthFlowParams,
+  StartOAuthFlowReturnType,
+} from '@clerk/clerk-expo';
 import { useAuth as zustandUseAuth } from 'src/store/authStore/auth.store';
 import { router } from 'expo-router';
+import {} from '@clerk/clerk-expo';
+
+interface OAuthFlow {
+  startOAuthFlow: (
+    startOAuthFlowParams?: StartOAuthFlowParams
+  ) => Promise<StartOAuthFlowReturnType>;
+}
 
 export const useWarmUpBrowser = () => {
   useEffect(() => {
@@ -30,15 +41,10 @@ const SignInWithOAuth = () => {
 
   const register = zustandUseAuth((state) => state.register);
 
-  const startOAuthSignIn = async (oAuthFlow: any) => {
+  const startOAuthSignIn = async (oAuthFlow: OAuthFlow) => {
     try {
       const { createdSessionId, setActive } = await oAuthFlow.startOAuthFlow();
-
-      console.log('createdSessionId', createdSessionId);
-      console.log('setActive', setActive);
-      console.log('oAuthFlow', oAuthFlow);
-
-      if (createdSessionId) {
+      if (createdSessionId && setActive) {
         await setActive({ session: createdSessionId });
         const tempCredentials = {
           email: 'SSOUser' + createdSessionId,
