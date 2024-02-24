@@ -1,4 +1,4 @@
-import { SafeAreaView } from 'react-native-safe-area-context';
+import SafeAreaView from '@components/SafeAreaView/SafeAreaView';
 import { Text, View } from 'react-native';
 import DeviceInfo from '@components/Device/DeviceInfo';
 import AppVersion from '@components/Device/AppVersion';

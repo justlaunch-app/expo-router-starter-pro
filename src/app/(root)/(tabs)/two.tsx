@@ -1,12 +1,13 @@
 import { View } from 'react-native';
 import { StyledText as Text } from '@components/Text/StyledText';
+import SafeAreaView from '@components/SafeAreaView/SafeAreaView';
 
 export default function TabTwoScreen() {
   return (
-    <View className={'px-4 flex-1'}>
-      <View className={'flex-row justify-between items-center'}>
-        <Text className={'text-2xl py-4'}>Page Two</Text>
+    <SafeAreaView>
+      <View className="flex-row justify-between items-center">
+        <Text className="text-2xl dark:text-white text-black">Page Two</Text>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }

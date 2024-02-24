@@ -56,7 +56,6 @@ const tokenCache = {
 function useProtectedRoute() {
   const segments = useSegments();
   const rootNavigationState = useRootNavigationState();
-  // Retrieve both user and tutorialCompleted flag from the store
   const { user, tutorialCompleted } = useAuth(
     ({ user, tutorialCompleted }) => ({ user, tutorialCompleted })
   );
@@ -75,8 +74,8 @@ function useProtectedRoute() {
 
     if (isGuestMode) {
       console.log('Guest Mode Active');
-      router.replace('/'); // Adjust as needed for your app's guest mode route
-      return; // Prevent further checks
+      router.replace('/');
+      return;
     }
     console.log('USER: ', user);
     console.log('inAuthGroup: ', inAuthGroup);
@@ -87,9 +86,6 @@ function useProtectedRoute() {
     } else if (user && !tutorialCompleted) {
       console.log('Redirecting to Tutorial');
       router.replace('/intro-steps');
-    } else if (user && tutorialCompleted) {
-      console.log('Redirecting to Home');
-      router.replace('/'); // Adjust this path as necessary
     }
   }, [user, tutorialCompleted, segments, navigationKey, isGuestMode]);
 }

@@ -1,6 +1,7 @@
 import { router } from 'expo-router';
 import { useAuth } from 'src/store/authStore/auth.store';
-import { View, Text } from 'react-native';
+import { Text } from 'react-native';
+import SafeAreaView from '@components/SafeAreaView/SafeAreaView';
 import { Button } from '@components/Button/Button';
 
 export default function TutorialLastPage() {
@@ -12,9 +13,9 @@ export default function TutorialLastPage() {
   };
 
   return (
-    <View className="flex-1 justify-center items-center">
+    <SafeAreaView>
       <Text>Tutorial Content Here</Text>
       <Button title="Get Started" onPress={finishTutorial} />
-    </View>
+    </SafeAreaView>
   );
 }
