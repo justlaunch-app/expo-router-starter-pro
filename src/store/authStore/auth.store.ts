@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import * as SecureStore from 'expo-secure-store';
 
 type Credentials = {
   email: string;
@@ -15,62 +16,74 @@ type AuthError = {
 
 interface AuthState {
   user: User | null;
-  users: User[] | [];
+  users: User[];
+  tutorialCompleted: boolean;
   login: (credentials: Credentials) => undefined | AuthError;
   register: (user: User) => undefined | AuthError;
   logout: () => void;
   resetPassword: (email: string) => string | AuthError;
+  completeTutorial: () => void;
+  setUser: (user: User | null) => void;
 }
 
 export const useAuth = create<AuthState>((set, get) => ({
   user: null,
   users: [],
+  tutorialCompleted: false,
+
   login(credentials) {
-    const user = credentials;
-
-    if (!user) {
-      return {
-        error: 'auth.errors.user-does-not-exist',
-      };
-    }
-
-    set({ user });
-  },
-  register(newUser) {
-    const userAlreadyRegistered = get().users?.find(
-      (user) => user.email === newUser.email
+    const user = get().users.find(
+      (u) =>
+        u.email === credentials.email && u.password === credentials.password
     );
-    if (userAlreadyRegistered) {
-      return {
-        error: 'auth.errors.already-registered',
-      };
+    if (!user) {
+      return { error: 'auth.errors.user-does-not-exist' };
     }
-
-    set({ users: [...get().users, newUser] });
+    set({ user });
+    SecureStore.setItemAsync('user', JSON.stringify(user));
   },
+
+  register(newUser) {
+    const userExists = get().users.some((user) => user.email === newUser.email);
+    if (userExists) {
+      return { error: 'auth.errors.already-registered' };
+    }
+    set((state) => ({ users: [...state.users, newUser] }));
+    SecureStore.setItemAsync(
+      'users',
+      JSON.stringify([...get().users, newUser])
+    );
+  },
+
   logout() {
     set({ user: null });
+    SecureStore.deleteItemAsync('user');
   },
+
   resetPassword(email) {
-    const user = get().users?.find((user) => user.email === email);
-
-    if (!user) {
-      return {
-        error: 'auth.errors.user-does-not-exist',
-      };
+    const users = get().users;
+    const userIndex = users.findIndex((user) => user.email === email);
+    if (userIndex === -1) {
+      return { error: 'auth.errors.user-does-not-exist' };
     }
+    const newPassword = Math.random().toString(36).slice(-8);
+    users[userIndex] = { ...users[userIndex], password: newPassword };
+    set({ users });
+    SecureStore.setItemAsync('users', JSON.stringify(users));
+    return newPassword;
+  },
 
-    const newPasswd = Math.random().toString(36);
+  completeTutorial() {
+    set({ tutorialCompleted: true });
+    SecureStore.setItemAsync('tutorialCompleted', 'true');
+  },
 
-    const updatedUsersList = get().users.map((user) => {
-      if (user.email === email) {
-        return { ...user, password: newPasswd };
-      }
-      return user;
-    });
-
-    set({ users: updatedUsersList });
-
-    return newPasswd;
+  setUser(user) {
+    set({ user });
+    if (user) {
+      SecureStore.setItemAsync('user', JSON.stringify(user));
+    } else {
+      SecureStore.deleteItemAsync('user');
+    }
   },
 }));

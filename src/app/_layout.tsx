@@ -15,6 +15,7 @@ import {
 } from '@react-navigation/native';
 import { I18nextProvider } from 'react-i18next';
 import { StatusBar } from 'expo-status-bar';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import i18n from '@locales/i18n';
 import { useColorScheme } from 'nativewind';
@@ -56,7 +57,10 @@ function useProtectedRoute() {
   const segments = useSegments();
   const rootNavigationState = useRootNavigationState();
 
-  const user = useAuth(({ user }) => user);
+  // Retrieve both user and tutorialCompleted flag from the store
+  const { user, tutorialCompleted } = useAuth(
+    ({ user, tutorialCompleted }) => ({ user, tutorialCompleted })
+  );
 
   const navigationKey = useMemo(() => {
     return rootNavigationState?.key;
@@ -69,12 +73,21 @@ function useProtectedRoute() {
       return;
     }
 
+    console.log('user', user);
+    console.log('inAuthGroup', inAuthGroup);
+    console.log('tutorialCompleted', tutorialCompleted);
+
     if (!user && !inAuthGroup) {
+      // User is not logged in and not in an authentication-related path
       router.replace('/sign-in');
-    } else if (user && inAuthGroup) {
-      router.replace('/');
+    } else if (user && !tutorialCompleted) {
+      // User is logged in but hasn't completed the tutorial
+      router.replace('/intro-steps'); // Ensure this is the correct path to your tutorial screen
+    } else if (user && tutorialCompleted) {
+      // User is logged in and has completed the tutorial
+      router.replace('/'); // Adjust this path as necessary
     }
-  }, [user, segments, navigationKey]);
+  }, [user, tutorialCompleted, segments, navigationKey]);
 }
 
 export default function RootLayout() {
@@ -113,16 +126,18 @@ function RootLayoutNav() {
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <I18nextProvider i18n={i18n}>
           <QueryClientProvider client={queryClient}>
-            <Stack>
-              <Stack.Screen name="(root)" options={{ headerShown: false }} />
-              <Stack.Screen
-                name="modal"
-                options={{
-                  presentation: 'modal',
-                }}
-              />
-            </Stack>
-            <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
+            <SafeAreaProvider>
+              <Stack>
+                <Stack.Screen name="(root)" options={{ headerShown: false }} />
+                <Stack.Screen
+                  name="modal"
+                  options={{
+                    presentation: 'modal',
+                  }}
+                />
+              </Stack>
+              <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
+            </SafeAreaProvider>
           </QueryClientProvider>
         </I18nextProvider>
       </ThemeProvider>
