@@ -1,119 +1,17 @@
-// import { useEffect } from 'react';
-// import { View } from 'react-native';
-// import { ControlledInput } from '@components/Input/ControlledInput';
-// import { useForm } from 'react-hook-form';
-// import { zodResolver } from '@hookform/resolvers/zod';
-// import { useAuth } from 'src/store/authStore/auth.store';
-// import { useTranslation } from 'react-i18next';
-// import { useSetTitle } from 'src/hooks/useSetTitle';
-// import { router } from 'expo-router';
-// import { signupSchema } from '@schemas/auth.schema';
-// import { useIsFocused } from '@react-navigation/native';
-// import { Label } from '@components/Label/StyledLabel';
-// import { Alert } from '@utils/Alert';
-// import { Button } from '@components/Button/Button';
-
-// export default function SignUp() {
-//   const { t } = useTranslation();
-//   useSetTitle(t('auth.sign-up'));
-
-//   const isFocused = useIsFocused();
-
-//   const { control, handleSubmit, reset } = useForm({
-//     resolver: zodResolver(signupSchema),
-//     defaultValues: {
-//       email: '',
-//       password: '',
-//       nickname: '',
-//     },
-//   });
-
-//   const register = useAuth((state) => {
-//     return state.register;
-//   });
-
-//   const onSubmit = handleSubmit((newUser) => {
-//     const { error } = register(newUser) ?? {};
-
-//     if (!error) {
-//       Alert.alert(t('auth.sign-up-completed'), undefined, [
-//         {
-//           text: t('auth.go-to-sign-in'),
-//           onPress: () => {
-//             router.replace('/(auth)/sign-in');
-//             reset();
-//           },
-//         },
-//       ]);
-//       return;
-//     }
-
-//     Alert.alert(t(error));
-//     reset();
-//   });
-
-//   useEffect(() => {
-//     if (!isFocused) {
-//       reset();
-//     }
-//   }, [isFocused, reset]);
-
-//   return (
-//     <View className="flex-1 items-center p-4 gap-y-8">
-//       <View className="w-full bg-transparent">
-//         <Label htmlFor="email-sign-up" className="font-bold mb-2">
-//           {t('auth.email')}
-//         </Label>
-//         <ControlledInput
-//           id="email-sign-up"
-//           keyboardType="email-address"
-//           placeholder="joe@acme.com"
-//           control={control}
-//           name="email"
-//         />
-//       </View>
-//       <View className="w-full bg-transparent">
-//         <Label htmlFor="nickname" className="font-bold mb-2">
-//           {t('auth.nickname')}
-//         </Label>
-//         <ControlledInput
-//           id="nickname"
-//           placeholder="joeDoe@12"
-//           control={control}
-//           name="nickname"
-//         />
-//       </View>
-//       <View className="w-full bg-transparent">
-//         <Label htmlFor="password-sign-up" className="font-bold mb-2">
-//           {t('auth.password')}
-//         </Label>
-//         <ControlledInput
-//           id="password-sign-up"
-//           control={control}
-//           name="password"
-//           secureTextEntry
-//         />
-//       </View>
-//       <View className="mt-4 bg-transparent w-full">
-//         <Button title={t('auth.sign-up')} onPress={onSubmit} />
-//       </View>
-//     </View>
-//   );
-// }
-
-import * as React from 'react';
+import { useState } from 'react';
 import { Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { useSignUp } from '@clerk/clerk-expo';
+import { useAuth } from 'src/store/authStore/auth.store';
 
 export default function SignUpScreen() {
   const { isLoaded, signUp, setActive } = useSignUp();
-
-  const [firstName, setFirstName] = React.useState('');
-  const [lastName, setLastName] = React.useState('');
-  const [emailAddress, setEmailAddress] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const [pendingVerification, setPendingVerification] = React.useState(false);
-  const [code, setCode] = React.useState('');
+  const registerInZustand = useAuth((state) => state.register);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [emailAddress, setEmailAddress] = useState('');
+  const [password, setPassword] = useState('');
+  const [pendingVerification, setPendingVerification] = useState(false);
+  const [code, setCode] = useState('');
 
   // start the sign up process.
   const onSignUpPress = async () => {
@@ -123,10 +21,13 @@ export default function SignUpScreen() {
 
     try {
       await signUp.create({
-        // firstName,
-        // lastName,
         emailAddress,
         password,
+      });
+
+      registerInZustand({
+        email: emailAddress,
+        password: password,
       });
 
       // send the email.
@@ -134,7 +35,7 @@ export default function SignUpScreen() {
 
       // change the UI to our pending section.
       setPendingVerification(true);
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error(JSON.stringify(err, null, 2));
     }
   };
@@ -151,7 +52,7 @@ export default function SignUpScreen() {
       });
 
       await setActive({ session: completeSignUp.createdSessionId });
-    } catch (err: Error | any) {
+    } catch (err: unknown) {
       console.error(JSON.stringify(err, null, 2));
     }
   };
@@ -162,6 +63,7 @@ export default function SignUpScreen() {
         <View>
           <View>
             <TextInput
+              className="text-white"
               autoCapitalize="none"
               value={firstName}
               placeholder="First Name..."
@@ -170,6 +72,7 @@ export default function SignUpScreen() {
           </View>
           <View>
             <TextInput
+              className="text-white"
               autoCapitalize="none"
               value={lastName}
               placeholder="Last Name..."
@@ -178,6 +81,7 @@ export default function SignUpScreen() {
           </View>
           <View>
             <TextInput
+              className="text-white"
               autoCapitalize="none"
               value={emailAddress}
               placeholder="Email..."
@@ -187,8 +91,10 @@ export default function SignUpScreen() {
 
           <View>
             <TextInput
+              className="text-white"
               value={password}
               placeholder="Password..."
+              placeholderClassName="text-white"
               placeholderTextColor="#000"
               secureTextEntry={true}
               onChangeText={(password) => setPassword(password)}
@@ -196,7 +102,7 @@ export default function SignUpScreen() {
           </View>
 
           <TouchableOpacity onPress={onSignUpPress}>
-            <Text>Sign up</Text>
+            <Text className="text-white">Sign up</Text>
           </TouchableOpacity>
         </View>
       )}

@@ -75,7 +75,6 @@ export default function SignIn() {
         identifier: email,
         password: password,
       });
-
       await setActive({ session: completeSignIn.createdSessionId });
     } catch (error) {
       if (error instanceof Error) {
@@ -85,6 +84,7 @@ export default function SignIn() {
         console.error('An unexpected error occurred', error);
       }
     }
+    router.replace('/');
   });
 
   useEffect(() => {

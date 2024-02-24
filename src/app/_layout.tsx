@@ -73,15 +73,23 @@ function useProtectedRoute() {
       return;
     }
 
+    if (isGuestMode) {
+      console.log('Guest Mode Active');
+      router.replace('/'); // Adjust as needed for your app's guest mode route
+      return; // Prevent further checks
+    }
+    console.log('USER: ', user);
+    console.log('inAuthGroup: ', inAuthGroup);
+
     if (!user && !inAuthGroup) {
+      console.log('Redirecting to Sign-In');
       router.replace('/sign-in');
-      if (isGuestMode) {
-        router.replace('/');
-      }
     } else if (user && !tutorialCompleted) {
+      console.log('Redirecting to Tutorial');
       router.replace('/intro-steps');
     } else if (user && tutorialCompleted) {
-      router.replace('/');
+      console.log('Redirecting to Home');
+      router.replace('/'); // Adjust this path as necessary
     }
   }, [user, tutorialCompleted, segments, navigationKey, isGuestMode]);
 }
