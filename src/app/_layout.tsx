@@ -56,7 +56,6 @@ const tokenCache = {
 function useProtectedRoute() {
   const segments = useSegments();
   const rootNavigationState = useRootNavigationState();
-
   // Retrieve both user and tutorialCompleted flag from the store
   const { user, tutorialCompleted } = useAuth(
     ({ user, tutorialCompleted }) => ({ user, tutorialCompleted })
@@ -72,10 +71,6 @@ function useProtectedRoute() {
     if (!navigationKey) {
       return;
     }
-
-    console.log('user', user);
-    console.log('inAuthGroup', inAuthGroup);
-    console.log('tutorialCompleted', tutorialCompleted);
 
     if (!user && !inAuthGroup) {
       // User is not logged in and not in an authentication-related path

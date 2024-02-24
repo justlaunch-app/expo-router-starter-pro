@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { View, Text } from 'react-native';
+import { router } from 'expo-router';
 import { ControlledInput } from '@components/Input/ControlledInput';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -34,6 +35,15 @@ export default function SignIn() {
   const { t } = useTranslation();
   const { signIn, setActive, isLoaded } = useSignIn();
 
+  //Guest Mode
+  const guestMode = zustandUseAuth((state) => {
+    return state.enableGuestMode;
+  });
+  const handleGuestMode = () => {
+    guestMode();
+    router.replace('/');
+  };
+
   const isFocused = useIsFocused();
   const { control, handleSubmit, reset } = useForm({
     resolver: zodResolver(signInSchema),
@@ -67,7 +77,6 @@ export default function SignIn() {
       });
 
       await setActive({ session: completeSignIn.createdSessionId });
-      // Optionally update Zustand store or navigate to another screen
     } catch (error) {
       if (error instanceof Error) {
         console.error(JSON.stringify(error, null, 2));
@@ -119,6 +128,16 @@ export default function SignIn() {
       <View className="mt-4 bg-transparent w-full">
         <Button title={t('auth.sign-in')} onPress={onSubmit} />
       </View>
+
+      <View className="mt-4 bg-transparent w-full">
+        <Button
+          title="Guest Mode"
+          onPress={() => {
+            handleGuestMode();
+          }}
+        />
+      </View>
+
       <SignOut />
     </View>
   );

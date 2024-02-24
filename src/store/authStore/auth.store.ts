@@ -24,13 +24,16 @@ interface AuthState {
   resetPassword: (email: string) => string | AuthError;
   completeTutorial: () => void;
   setUser: (user: User | null) => void;
+  isGuestMode: boolean;
+  enableGuestMode: () => void;
+  disableGuestMode: () => void;
 }
 
 export const useAuth = create<AuthState>((set, get) => ({
   user: null,
   users: [],
   tutorialCompleted: false,
-
+  isGuestMode: false,
   login(credentials) {
     const user = get().users.find(
       (u) =>
@@ -40,6 +43,7 @@ export const useAuth = create<AuthState>((set, get) => ({
       return { error: 'auth.errors.user-does-not-exist' };
     }
     set({ user });
+    set({ isGuestMode: false });
     SecureStore.setItemAsync('user', JSON.stringify(user));
   },
 
@@ -57,6 +61,7 @@ export const useAuth = create<AuthState>((set, get) => ({
 
   logout() {
     set({ user: null });
+    set({ isGuestMode: true });
     SecureStore.deleteItemAsync('user');
   },
 
@@ -85,5 +90,10 @@ export const useAuth = create<AuthState>((set, get) => ({
     } else {
       SecureStore.deleteItemAsync('user');
     }
+  },
+  enableGuestMode: () => set({ user: null, isGuestMode: true }),
+
+  disableGuestMode() {
+    set({ isGuestMode: false });
   },
 }));
