@@ -13,6 +13,7 @@ import { Alert } from '@utils/Alert';
 import { Button } from '@components/Button/Button';
 import { useSignIn, SignedIn, SignedOut, useAuth } from '@clerk/clerk-expo';
 import SignInWithOAuth from '@components/OAuth/SignInWithOAuth';
+import SafeAreaView from '@components/SafeAreaView/SafeAreaView';
 
 const SignOut = () => {
   const { isLoaded, signOut } = useAuth();
@@ -84,7 +85,6 @@ export default function SignIn() {
           register({ email, password });
           login(credentials);
           await setActive({ session: completeSignIn.createdSessionId });
-          router.replace('/');
         }
       } else {
         router.replace('/');
@@ -105,7 +105,7 @@ export default function SignIn() {
   }, [isFocused, reset]);
 
   return (
-    <View className="flex-1 items-center p-4 gap-y-8">
+    <SafeAreaView>
       <SignedIn>
         <Text>You are Signed in</Text>
       </SignedIn>
@@ -150,6 +150,6 @@ export default function SignIn() {
       </View>
 
       <SignOut />
-    </View>
+    </SafeAreaView>
   );
 }
