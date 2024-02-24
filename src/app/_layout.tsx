@@ -60,6 +60,7 @@ function useProtectedRoute() {
   const { user, tutorialCompleted } = useAuth(
     ({ user, tutorialCompleted }) => ({ user, tutorialCompleted })
   );
+  const isGuestMode = useAuth((state) => state.isGuestMode);
 
   const navigationKey = useMemo(() => {
     return rootNavigationState?.key;
@@ -73,16 +74,16 @@ function useProtectedRoute() {
     }
 
     if (!user && !inAuthGroup) {
-      // User is not logged in and not in an authentication-related path
       router.replace('/sign-in');
+      if (isGuestMode) {
+        router.replace('/');
+      }
     } else if (user && !tutorialCompleted) {
-      // User is logged in but hasn't completed the tutorial
-      router.replace('/intro-steps'); // Ensure this is the correct path to your tutorial screen
+      router.replace('/intro-steps');
     } else if (user && tutorialCompleted) {
-      // User is logged in and has completed the tutorial
-      router.replace('/'); // Adjust this path as necessary
+      router.replace('/');
     }
-  }, [user, tutorialCompleted, segments, navigationKey]);
+  }, [user, tutorialCompleted, segments, navigationKey, isGuestMode]);
 }
 
 export default function RootLayout() {
