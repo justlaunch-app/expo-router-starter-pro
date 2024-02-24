@@ -57,34 +57,45 @@ export default function SignIn() {
     return state.login;
   });
 
-  const onSubmit = handleSubmit(async (credentials) => {
-    if (!signIn || !setActive) {
-      console.error('Clerk signIn or setActive is undefined.');
-      return;
-    }
+  const register = zustandUseAuth((state) => state.register);
 
-    if (!isLoaded) {
+  const onSubmit = handleSubmit(async (credentials) => {
+    if (!signIn || !setActive || !isLoaded) {
+      console.error('Clerk signIn or setActive is undefined or not loaded.');
       return;
     }
 
     try {
       const { email, password } = credentials;
 
-      login(credentials);
-      const completeSignIn = await signIn.create({
-        identifier: email,
-        password: password,
-      });
-      await setActive({ session: completeSignIn.createdSessionId });
-    } catch (error) {
-      if (error instanceof Error) {
-        console.error(JSON.stringify(error, null, 2));
-        Alert.alert(t('auth.errors.sign-in-failed'), error.message);
+      const loginResponse = login(credentials);
+
+      if (loginResponse?.error) {
+        console.log(
+          'User does not exist in Zustand, attempting to sign in with Clerk'
+        );
+        const completeSignIn = await signIn.create({
+          identifier: email,
+          password,
+        });
+
+        if (completeSignIn.createdSessionId) {
+          console.log('User successfully signed in with Clerk');
+          register({ email, password });
+          login(credentials);
+          await setActive({ session: completeSignIn.createdSessionId });
+          router.replace('/');
+        }
       } else {
-        console.error('An unexpected error occurred', error);
+        router.replace('/');
       }
+    } catch (error) {
+      console.error('Sign-in error:', error);
+      Alert.alert(
+        t('auth.errors.sign-in-failed'),
+        error instanceof Error ? error.message : 'An unexpected error occurred'
+      );
     }
-    router.replace('/');
   });
 
   useEffect(() => {

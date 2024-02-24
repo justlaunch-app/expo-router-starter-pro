@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import * as WebBrowser from 'expo-web-browser';
 import { Button, View } from 'react-native';
-import SSOButton from './Button/SSOButton';
-import x from '@assets/icons/x.png';
 import { useOAuth } from '@clerk/clerk-expo';
+import { useAuth as zustandUseAuth } from 'src/store/authStore/auth.store';
+import { router } from 'expo-router';
 
 export const useWarmUpBrowser = () => {
   useEffect(() => {
@@ -23,16 +23,38 @@ const SignInWithOAuth = () => {
   const googleOAuth = useOAuth({ strategy: 'oauth_google' });
   const appleOAuth = useOAuth({ strategy: 'oauth_apple' });
   const githubOAuth = useOAuth({ strategy: 'oauth_github' });
-  const twitterOAuth = useOAuth({ strategy: 'oauth_twitter' });
+
+  const login = zustandUseAuth((state) => {
+    return state.login;
+  });
+
+  const register = zustandUseAuth((state) => state.register);
 
   const startOAuthSignIn = async (oAuthFlow: any) => {
     try {
       const { createdSessionId, setActive } = await oAuthFlow.startOAuthFlow();
 
+      console.log('createdSessionId', createdSessionId);
+      console.log('setActive', setActive);
+      console.log('oAuthFlow', oAuthFlow);
+
       if (createdSessionId) {
-        setActive({ session: createdSessionId });
+        await setActive({ session: createdSessionId });
+        const tempCredentials = {
+          email: 'SSOUser' + createdSessionId,
+          password: 'pass' + createdSessionId,
+        };
+        register({
+          email: tempCredentials.email,
+          password: tempCredentials.password,
+        });
+        login({
+          email: tempCredentials.email,
+          password: tempCredentials.password,
+        });
+        router.replace('/intro-steps');
       }
-    } catch (err) {
+    } catch (err: unknown) {
       console.error('OAuth error', err);
     }
   };
@@ -50,14 +72,6 @@ const SignInWithOAuth = () => {
       <Button
         title="Sign in with GitHub"
         onPress={() => startOAuthSignIn(githubOAuth)}
-      />
-      <SSOButton
-        logo={x}
-        backgroundColor="white"
-        textColor="black"
-        borderRadius={32}
-        text="Sign in with X"
-        onPress={() => startOAuthSignIn(twitterOAuth)}
       />
     </View>
   );
