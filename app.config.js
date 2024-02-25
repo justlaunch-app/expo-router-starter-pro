@@ -68,6 +68,14 @@ module.exports = {
     plugins: [
       [
         'expo-router',
+      ],
+      [
+        "@sentry/react-native/expo",
+        {
+          "url": "https://sentry.io/",
+          "organization": "sentry org slug, or use the `SENTRY_ORG` environment variable",
+          "project": "sentry project name, or use the `SENTRY_PROJECT` environment variable"
+        }
       ]
     ],
     extra: {
