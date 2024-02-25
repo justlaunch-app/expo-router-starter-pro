@@ -28,7 +28,12 @@
     "sign-up": "Sign Up",
     "your-new-password": "Your new password",
     "go-to-sign-in": "Go to sign-in",
-    "sign-up-completed": "Sign Up completed!"
+    "sign-up-completed": "Sign Up completed!",
+    "signed-in": "Signed in!",
+    "signed-out": "Signed out!",
+    "email-placeholder": "zoltan@justlaunch.app",
+    "password-placeholder": "********",
+    "guest-mode": "Guest mode"
   },
   "copy-to-clipboard": "Copy to clipboard",
   "copied-to-clipboard": "Copied to clipboard",

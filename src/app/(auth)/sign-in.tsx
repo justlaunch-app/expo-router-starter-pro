@@ -107,10 +107,10 @@ export default function SignIn() {
   return (
     <SafeAreaView>
       <SignedIn>
-        <Text>You are Signed in</Text>
+        <Text>{t('signed-in')}</Text>
       </SignedIn>
       <SignedOut>
-        <Text>You are Signed out</Text>
+        <Text>{t('signed-out')}</Text>
         <SignInWithOAuth />
       </SignedOut>
       <View className="w-full bg-transparent">
@@ -120,7 +120,7 @@ export default function SignIn() {
         <ControlledInput
           id="email-sign-in"
           keyboardType="email-address"
-          placeholder="joe@acme.com"
+          placeholder={t('auth.email-placeholder')}
           control={control}
           name="email"
         />
@@ -134,6 +134,7 @@ export default function SignIn() {
           control={control}
           name="password"
           secureTextEntry
+          placeholder={t('auth.password-placeholder')}
         />
       </View>
       <View className="mt-4 bg-transparent w-full">
@@ -142,7 +143,7 @@ export default function SignIn() {
 
       <View className="mt-4 bg-transparent w-full">
         <Button
-          title="Guest Mode"
+          title={t('auth.guest-mode')}
           onPress={() => {
             handleGuestMode();
           }}
