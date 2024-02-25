@@ -24,7 +24,6 @@ const SSOButton: React.FC<SSOButtonProps> = ({
   logo,
   text,
   backgroundColor,
-  textColor,
   borderRadius,
   height = 20,
   width = 20,
@@ -40,22 +39,16 @@ const SSOButton: React.FC<SSOButtonProps> = ({
     borderRadius,
   };
 
-  const textStyle = {
-    color: textColor,
-    textAlign: 'center',
-    flex: 1,
-  };
+  const imageSource = typeof logo === 'string' ? { uri: logo } : logo;
 
   return (
     <TouchableOpacity style={buttonStyle} onPress={onPress}>
       <Image
-        source={logo}
+        source={imageSource}
         style={{ height: height, width: width, marginRight: 8 }}
         resizeMode="contain"
       />
-      <Text className={textClasses} style={textStyle}>
-        {text}
-      </Text>
+      <Text className={textClasses}>{text}</Text>
       <View style={{ height: height, width: width }} />
     </TouchableOpacity>
   );
