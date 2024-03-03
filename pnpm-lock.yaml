@@ -113,6 +113,9 @@ dependencies:
   react-native-safe-area-context:
     specifier: 4.8.2
     version: 4.8.2(react-native@0.73.4)(react@18.2.0)
+  react-query-kit:
+    specifier: ^3.1.2
+    version: 3.1.2(@tanstack/react-query@5.17.8)
   vexo-analytics:
     specifier: ^1.3.13
     version: 1.3.13(@react-navigation/native@6.1.9)(react-native@0.73.4)(react@18.2.0)
@@ -8406,6 +8409,17 @@ packages:
       - encoding
       - supports-color
       - utf-8-validate
+    dev: false
+
+  /react-query-kit@3.1.2(@tanstack/react-query@5.17.8):
+    resolution: {integrity: sha512-8f7YioN71sKIqcHn9lc3WV8eHM5L4hjyzJT3+RQEu7sfr/h9FD9rtsoe2PLIop4b+WJ4QqjZCBLERxfJfO/XjA==}
+    peerDependencies:
+      '@tanstack/react-query': ^4 || ^5
+    peerDependenciesMeta:
+      '@tanstack/react-query':
+        optional: true
+    dependencies:
+      '@tanstack/react-query': 5.17.8(react@18.2.0)
     dev: false
 
   /react-refresh@0.14.0:
