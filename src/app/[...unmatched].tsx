@@ -1,6 +1,6 @@
 import { Link, Stack } from 'expo-router';
 import { Text, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import SafeAreaView from '@components/SafeAreaView/SafeAreaView';
 
 export default function NotFoundScreen() {
   return (
