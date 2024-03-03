@@ -35,6 +35,19 @@ export const useAuth = create<AuthState>((set, get) => ({
   tutorialCompleted: false,
   isGuestMode: false,
   login(credentials) {
+    // Check for guest credentials first
+    if (credentials.email === 'guest' && credentials.password === 'guest') {
+      const guestUser = {
+        email: 'guest',
+        password: 'guest',
+        nickname: 'Guest',
+      };
+      set({ user: guestUser, isGuestMode: true });
+      SecureStore.setItemAsync('user', JSON.stringify(guestUser));
+      return;
+    }
+
+    // Existing login logic for regular users
     const user = get().users.find(
       (u) =>
         u.email === credentials.email && u.password === credentials.password
@@ -42,8 +55,7 @@ export const useAuth = create<AuthState>((set, get) => ({
     if (!user) {
       return { error: 'auth.errors.user-does-not-exist' };
     }
-    set({ user });
-    set({ isGuestMode: false });
+    set({ user, isGuestMode: false });
     SecureStore.setItemAsync('user', JSON.stringify(user));
   },
 

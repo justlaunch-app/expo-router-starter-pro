@@ -5,9 +5,7 @@ import { useAuth } from 'src/store/authStore/auth.store';
 import Header from '@components/Header/Header';
 
 export default function Index() {
-  const isGuestMode = useAuth((state) => state.isGuestMode);
-
-  console.log('isGuestMode', isGuestMode);
+  const { isGuestMode } = useAuth();
 
   return (
     <>

@@ -42,6 +42,7 @@ export default function SignIn() {
   });
   const handleGuestMode = () => {
     guestMode();
+    login({ email: 'guest', password: 'guest' });
     router.replace('/');
   };
 

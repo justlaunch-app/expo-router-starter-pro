@@ -89,19 +89,14 @@ function useProtectedRoute() {
       return;
     }
 
-    if (isGuestMode) {
-      console.log('Guest Mode Active');
+    if (isGuestMode && user?.email !== 'guest' && user?.password !== 'guest') {
       router.replace('/');
       return;
     }
-    console.log('USER: ', user);
-    console.log('inAuthGroup: ', inAuthGroup);
 
     if (!user && !inAuthGroup) {
-      console.log('Redirecting to Sign-In');
       router.replace('/sign-in');
     } else if (user && !tutorialCompleted) {
-      console.log('Redirecting to Tutorial');
       router.replace('/intro-steps');
     }
   }, [user, tutorialCompleted, segments, navigationKey, isGuestMode]);
