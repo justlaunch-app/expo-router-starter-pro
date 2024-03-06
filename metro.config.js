@@ -1,12 +1,12 @@
 /* eslint-disable no-undef */
 // Learn more https://docs.expo.io/guides/customizing-metro
 /* eslint-disable-next-line @typescript-eslint/no-var-requires */
-const { getSentryExpoConfig } = require('@sentry/react-native/metro');
+const { getDefaultConfig } = require('expo/metro-config');
 /* eslint-disable-next-line @typescript-eslint/no-var-requires */
 const { withNativeWind } = require('nativewind/metro');
 
 /** @type {import('expo/metro-config').MetroConfig} */
-const config = getSentryExpoConfig(__dirname, {
+const config = getDefaultConfig(__dirname, {
   isCSSEnabled: true,
 });
 

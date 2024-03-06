@@ -6,7 +6,7 @@ module.exports = {
       tsconfigPaths: true,
     },
     slug: 'expo-router-pro-starter',
-    version: '1.0.0',
+    version: '1.1.1',
     orientation: 'portrait',
     icon: './public/favicon-32x32.png',
     scheme: 'acme',
@@ -21,17 +21,6 @@ module.exports = {
     },
     mode: 'production',
     assetBundlePatterns: ['**/*'],
-    hooks: {
-      postPublish: [
-        {
-          "file": "sentry-expo/upload-sourcemaps",
-          "config": {
-            "organization": "sentry org slug, or use the `SENTRY_ORG` environment variable",
-            "project": "sentry project name, or use the `SENTRY_PROJECT` environment variable"
-          }
-        }
-      ]
-    },
     ios: {
       supportsTablet: true,
       bundleIdentifier: 'com.zoltanfodor.test-expo-router-now'
@@ -68,14 +57,6 @@ module.exports = {
     plugins: [
       [
         'expo-router',
-      ],
-      [
-        "@sentry/react-native/expo",
-        {
-          "url": "https://sentry.io/",
-          "organization": "sentry org slug, or use the `SENTRY_ORG` environment variable",
-          "project": "sentry project name, or use the `SENTRY_PROJECT` environment variable"
-        }
       ]
     ],
     extra: {

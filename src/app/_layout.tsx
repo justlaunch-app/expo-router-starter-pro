@@ -29,18 +29,6 @@ import '../../global.css';
 import { ClerkProvider } from '@clerk/clerk-expo';
 import * as SecureStore from 'expo-secure-store';
 
-// Sentry Setup
-import * as Sentry from '@sentry/react-native';
-const routingInstrumentation = new Sentry.ReactNavigationInstrumentation();
-Sentry.init({
-  dsn: 'YOUR DSN HERE',
-  debug: true, // Set to false in production or If you want to disable Sentry console logs
-  integrations: [
-    new Sentry.ReactNativeTracing({
-      routingInstrumentation,
-    }),
-  ],
-});
 
 export { ErrorBoundary } from 'expo-router';
 
@@ -102,21 +90,13 @@ function useProtectedRoute() {
   }, [user, tutorialCompleted, segments, navigationKey, isGuestMode]);
 }
 
-function RootLayout() {
+export default function RootLayout() {
   const [loaded, error] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
     ...FontAwesome.font,
   });
 
   useProtectedRoute();
-
-  const ref = useNavigationContainerRef();
-
-  useEffect(() => {
-    if (ref) {
-      routingInstrumentation.registerNavigationContainer(ref);
-    }
-  }, [ref]);
 
   useEffect(() => {
     if (error) throw error;
@@ -164,5 +144,3 @@ function RootLayoutNav() {
     </ClerkProvider>
   );
 }
-
-export default Sentry.wrap(RootLayout);
