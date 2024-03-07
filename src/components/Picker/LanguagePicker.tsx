@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 import { StyledText as Text } from '@components/Text/StyledText';
-import { classNames } from '@utils/classNames';
+import { cn } from '@utils/classNames';
 import { Picker } from '@react-native-picker/picker';
 import { useTranslation } from 'react-i18next';
 import { useLang } from 'src/store/langStore/lang.store';
@@ -24,7 +24,7 @@ export default function LanguagePicker({ className }: { className?: string }) {
     <View className={className}>
       <Text className="text-lg font-semibold">{t('language')}:</Text>
       <View
-        className={classNames({
+        className={cn({
           // '-mt-14': Platform.OS === 'ios',
           'bg-transparent': true,
         })}

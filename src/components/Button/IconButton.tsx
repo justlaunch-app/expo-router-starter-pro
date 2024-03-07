@@ -1,4 +1,4 @@
-import { classNames } from '@utils/classNames';
+import { cn } from '@utils/classNames';
 import { useColorScheme } from 'nativewind';
 import { View, Platform, Pressable, PressableProps } from 'react-native';
 
@@ -15,7 +15,7 @@ export function IconButton({
 
   return (
     <View
-      className={classNames({
+      className={cn({
         'rounded-md overflow-hidden': true,
         'active:text-slate-100': Platform.OS === 'ios',
         'bg-white': colorScheme === 'light',
