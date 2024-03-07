@@ -6,7 +6,6 @@ import {
   useRootNavigationState,
   useSegments,
   router,
-  useNavigationContainerRef,
 } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import {
@@ -28,7 +27,6 @@ import '../../global.css';
 
 import { ClerkProvider } from '@clerk/clerk-expo';
 import * as SecureStore from 'expo-secure-store';
-
 
 export { ErrorBoundary } from 'expo-router';
 
@@ -104,7 +102,9 @@ export default function RootLayout() {
 
   useEffect(() => {
     if (loaded) {
-      SplashScreen.hideAsync();
+      setTimeout(() => {
+        SplashScreen.hideAsync();
+      }, 1000);
     }
   }, [loaded]);
 

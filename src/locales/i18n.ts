@@ -5,6 +5,8 @@ import * as Localization from 'expo-localization';
 import en from './en.json';
 import es from './es.json';
 
+const preferredLocale = Localization.getLocales()[0].languageTag;
+
 i18n.use(initReactI18next).init({
   resources: {
     en: {
@@ -15,7 +17,7 @@ i18n.use(initReactI18next).init({
     },
   },
   fallbackLng: 'en',
-  lng: Localization.locale.split('-')[0],
+  lng: preferredLocale.split('-')[0],
   interpolation: {
     escapeValue: false,
   },
