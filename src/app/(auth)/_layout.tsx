@@ -1,15 +1,13 @@
+import SafeAreaView from '@components/SafeAreaView/SafeAreaView';
 import { MaterialTopTabs } from '@layouts/material-top-tabs';
-import { useNavigation } from 'expo-router';
-import { useLayoutEffect } from 'react';
+import useHeaderVisibility from '@hooks/useHeaderVisibility';
 
 export default function IndexTopTabsLayout() {
-  const { setOptions } = useNavigation();
+  useHeaderVisibility(false);
 
-  useLayoutEffect(() => {
-    setOptions({
-      headerShown: true,
-    });
-  }, [setOptions]);
-
-  return <MaterialTopTabs />;
+  return (
+    <SafeAreaView>
+      <MaterialTopTabs />
+    </SafeAreaView>
+  );
 }
