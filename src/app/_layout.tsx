@@ -127,7 +127,7 @@ function RootLayoutNav() {
         <I18nextProvider i18n={i18n}>
           <QueryClientProvider client={queryClient}>
             <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-              <Stack>
+              <Stack screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="(root)" options={{ headerShown: false }} />
                 <Stack.Screen
                   name="modal"
