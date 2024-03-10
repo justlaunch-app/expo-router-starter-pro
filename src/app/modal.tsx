@@ -1,6 +1,6 @@
 import { View } from 'react-native';
-import { StyledText as Text } from '@components/Text/StyledText';
-import { ExternalLink } from '@components/Link/ExternalLink';
+import { StyledText as Text } from '@components/core/Text/StyledText';
+import { ExternalLink } from '@components/core/Link/ExternalLink';
 
 export default function ModalScreen() {
   return (

@@ -1,9 +1,9 @@
 import { FlatList } from 'react-native';
 import { Article } from '@srcTypes/Article';
-import { FeedLink } from '@components/Feed/FeedLink';
+import { FeedLink } from '@components/ui/Feed/FeedLink';
 
 import feedData from '@assets/data/feed.json';
-import SafeAreaView from '@components/SafeAreaView/SafeAreaView';
+import SafeAreaView from '@components/core/SafeAreaView/SafeAreaView';
 
 interface RenderItemProps {
   item: Article;

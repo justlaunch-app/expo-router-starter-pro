@@ -1,11 +1,11 @@
 import { View } from 'react-native';
-import { StyledText as Text } from '@components/Text/StyledText';
+import { StyledText as Text } from '@components/core/Text/StyledText';
 import { Modal, Pressable } from 'react-native';
-import LanguagePicker from '@components/Picker/LanguagePicker';
+import LanguagePicker from '@components/ui/Picker/LanguagePicker';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import IonIcons from '@expo/vector-icons/Ionicons';
 import { useTranslation } from 'react-i18next';
-import AppVersion from '@components/Device/AppVersion';
+import AppVersion from '@components/ui/Device/AppVersion';
 import { useColorScheme } from 'nativewind';
 
 export function LanguagePickerModal({

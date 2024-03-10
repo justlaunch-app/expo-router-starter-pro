@@ -1,19 +1,19 @@
 import { useEffect } from 'react';
 import { View, Text } from 'react-native';
 import { router } from 'expo-router';
-import { ControlledInput } from '@components/Input/ControlledInput';
+import { ControlledInput } from '@components/core/Input/ControlledInput';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useAuth as zustandUseAuth } from 'src/store/authStore/auth.store';
 import { useTranslation } from 'react-i18next';
 import { useIsFocused } from '@react-navigation/native';
 import { signInSchema } from '@schemas/auth.schema';
-import { Label } from '@components/Label/StyledLabel';
+import { Label } from '@components/core/Label/StyledLabel';
 import { Alert } from '@utils/Alert';
-import { Button } from '@components/Button/Button';
+import { Button } from '@components/core/Button/Button';
 import { useSignIn, SignedIn, SignedOut, useAuth } from '@clerk/clerk-expo';
-import SignInWithOAuth from '@components/OAuth/SignInWithOAuth';
-import SafeAreaView from '@components/SafeAreaView/SafeAreaView';
+import SignInWithOAuth from '@components/ui/OAuth/SignInWithOAuth';
+import SafeAreaView from '@components/core/SafeAreaView/SafeAreaView';
 
 const SignOut = () => {
   const { isLoaded, signOut } = useAuth();

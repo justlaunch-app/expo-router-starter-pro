@@ -1,10 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import { Text, View } from 'react-native';
-import SafeAreaView from '@components/SafeAreaView/SafeAreaView';
+import SafeAreaView from '@components/core/SafeAreaView/SafeAreaView';
 import { useAuth } from 'src/store/authStore/auth.store';
-import { Carousel } from '@components/Carousel/Carousel';
-import { ExternalLink as Link } from '@components/Link/ExternalLink';
-import Header from '@components/Header/Header';
+import { Carousel } from '@components/ui/Carousel/Carousel';
+import { ExternalLink as Link } from '@components/core/Link/ExternalLink';
+import Header from '@components/ui/Header/Header';
 import feed from '@assets/data/feed.json';
 import { viewportWidth, spacing } from '@utils/viewport';
 

@@ -1,5 +1,5 @@
 import { View } from 'react-native';
-import { StyledText as Text } from '@components/Text/StyledText';
+import { StyledText as Text } from '@components/core/Text/StyledText';
 import { cn } from '@utils/classNames';
 import { Picker } from '@react-native-picker/picker';
 import { useTranslation } from 'react-i18next';

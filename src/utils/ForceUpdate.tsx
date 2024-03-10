@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { View, Platform } from 'react-native';
-import { ExternalLink } from '@components/Link/ExternalLink';
-import { StyledText as Text } from '@components/Text/StyledText';
+import { ExternalLink } from '@components/core/Link/ExternalLink';
+import { StyledText as Text } from '@components/core/Text/StyledText';
 import appVersion from '@config/version';
 
 // URL to your version info JSON file

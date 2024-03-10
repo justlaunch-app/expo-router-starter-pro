@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { useSignUp } from '@clerk/clerk-expo';
-import SafeAreaView from '@components/SafeAreaView/SafeAreaView';
+import SafeAreaView from '@components/core/SafeAreaView/SafeAreaView';
 import { useAuth } from 'src/store/authStore/auth.store';
 
 export default function SignUpScreen() {

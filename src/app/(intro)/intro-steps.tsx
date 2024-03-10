@@ -10,7 +10,7 @@ import {
   NativeSyntheticEvent,
   NativeScrollEvent,
 } from 'react-native';
-import SafeAreaView from '@components/SafeAreaView/SafeAreaView';
+import SafeAreaView from '@components/core/SafeAreaView/SafeAreaView';
 import { SCREEN_WIDTH } from '@utils/deviceSize';
 
 const tutorialData = [

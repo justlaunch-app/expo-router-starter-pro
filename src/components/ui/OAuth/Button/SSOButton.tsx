@@ -6,7 +6,7 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import TouchableOpacity from '@components/Button/TouchableOpacity';
+import TouchableOpacity from '@components/core/Button/TouchableOpacity';
 
 interface SSOButtonProps {
   logo: ImageSourcePropType | string;
