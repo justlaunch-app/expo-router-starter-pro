@@ -8,11 +8,8 @@ import {
   router,
 } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import {
-  ThemeProvider,
-  DarkTheme,
-  DefaultTheme,
-} from '@react-navigation/native';
+import { ThemeProvider } from '@react-navigation/native';
+import { DarkTheme, DefaultTheme } from '../utils/theme';
 import { I18nextProvider } from 'react-i18next';
 import { StatusBar } from 'expo-status-bar';
 import {
@@ -26,7 +23,7 @@ import { useAuth } from 'src/store/authStore/auth.store';
 import '../../global.css';
 
 import { ClerkProvider } from '@clerk/clerk-expo';
-import * as SecureStore from 'expo-secure-store';
+import { tokenCache } from '@utils/tokenCache';
 
 export { ErrorBoundary } from 'expo-router';
 
@@ -37,24 +34,6 @@ export const unstable_settings = {
 };
 
 SplashScreen.preventAutoHideAsync();
-
-//Clerk Auth JWT Token Cache
-const tokenCache = {
-  async getToken(key: string) {
-    try {
-      return SecureStore.getItemAsync(key);
-    } catch (err) {
-      return null;
-    }
-  },
-  async saveToken(key: string, value: string) {
-    try {
-      return SecureStore.setItemAsync(key, value);
-    } catch (err) {
-      return;
-    }
-  },
-};
 
 function useProtectedRoute() {
   const segments = useSegments();
