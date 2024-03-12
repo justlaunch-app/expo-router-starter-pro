@@ -87,8 +87,6 @@ export default function SignIn() {
           login(credentials);
           await setActive({ session: completeSignIn.createdSessionId });
         }
-      } else {
-        router.replace('/');
       }
     } catch (error) {
       console.error('Sign-in error:', error);
