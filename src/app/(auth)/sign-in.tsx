@@ -11,26 +11,9 @@ import { signInSchema } from '@schemas/auth.schema';
 import { Label } from '@components/core/Label/StyledLabel';
 import { Alert } from '@utils/Alert';
 import { Button } from '@components/core/Button/Button';
-import { useSignIn, SignedIn, SignedOut, useAuth } from '@clerk/clerk-expo';
+import { useSignIn, SignedIn, SignedOut } from '@clerk/clerk-expo';
 import SignInWithOAuth from '@components/ui/OAuth/SignInWithOAuth';
 import SafeAreaView from '@components/core/SafeAreaView/SafeAreaView';
-
-const SignOut = () => {
-  const { isLoaded, signOut } = useAuth();
-  if (!isLoaded) {
-    return null;
-  }
-  return (
-    <View>
-      <Button
-        title="Sign Out"
-        onPress={() => {
-          signOut();
-        }}
-      />
-    </View>
-  );
-};
 
 export default function SignIn() {
   const { t } = useTranslation();
@@ -148,8 +131,6 @@ export default function SignIn() {
           }}
         />
       </View>
-
-      <SignOut />
     </SafeAreaView>
   );
 }
