@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { View, Text } from 'react-native';
 import { router } from 'expo-router';
 import { ControlledInput } from '@components/core/Input/ControlledInput';
@@ -6,7 +5,6 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useAuth as zustandUseAuth } from 'src/store/authStore/auth.store';
 import { useTranslation } from 'react-i18next';
-import { useIsFocused } from '@react-navigation/native';
 import { signInSchema } from '@schemas/auth.schema';
 import { Label } from '@components/core/Label/StyledLabel';
 import { Alert } from '@utils/Alert';
@@ -29,8 +27,7 @@ export default function SignIn() {
     router.replace('/');
   };
 
-  const isFocused = useIsFocused();
-  const { control, handleSubmit, reset } = useForm({
+  const { control, handleSubmit } = useForm({
     resolver: zodResolver(signInSchema),
     defaultValues: {
       email: '',
@@ -79,12 +76,6 @@ export default function SignIn() {
       );
     }
   });
-
-  useEffect(() => {
-    if (!isFocused) {
-      reset();
-    }
-  }, [isFocused, reset]);
 
   return (
     <SafeAreaView>
