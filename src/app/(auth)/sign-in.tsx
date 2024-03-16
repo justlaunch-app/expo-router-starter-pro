@@ -8,11 +8,11 @@ import { useTranslation } from 'react-i18next';
 import { signInSchema } from '@schemas/auth.schema';
 import { Label } from '@components/core/Label/StyledLabel';
 import { Alert } from '@utils/Alert';
-import { Button } from '@components/core/Button/Button';
 import TouchableOpacity from '@components/core/Button/TouchableOpacity';
 import { useSignIn } from '@clerk/clerk-expo';
 import SignInWithOAuth from '@components/ui/OAuth/SignInWithOAuth';
 import SafeAreaView from '@components/core/SafeAreaView/SafeAreaView';
+import { Separator } from '@components/core/Separator/Separator';
 import { buttonClasses } from '@utils/buttonClasses';
 import { cn } from '@utils/classNames';
 
@@ -81,8 +81,7 @@ export default function SignIn() {
   });
 
   return (
-    <SafeAreaView>
-      <SignInWithOAuth />
+    <SafeAreaView className="px-4">
       <View className="w-full bg-transparent">
         <Label htmlFor="email-sign-in" className="font-bold mb-2">
           {t('auth.email')}
@@ -116,14 +115,16 @@ export default function SignIn() {
         </TouchableOpacity>
       </View>
 
-      <View className="mt-4 bg-transparent w-full">
-        <Button
-          title={t('auth.guest-mode')}
-          onPress={() => {
-            handleGuestMode();
-          }}
-        />
-      </View>
+      <Separator className="px-10 py-5" text="or SSO" />
+      <SignInWithOAuth />
+      <Text
+        className="text-center flex-1 text-sm"
+        onPress={() => {
+          handleGuestMode();
+        }}
+      >
+        {t('auth.guest-mode')}
+      </Text>
     </SafeAreaView>
   );
 }
