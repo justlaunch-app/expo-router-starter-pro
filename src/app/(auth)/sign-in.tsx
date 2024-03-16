@@ -117,6 +117,7 @@ export default function SignIn() {
 
       <Separator className="px-10 py-5" text="or SSO" />
       <SignInWithOAuth />
+      <Separator className="px-10 py-5" />
       <Text
         className="text-center flex-1 text-sm"
         onPress={() => {

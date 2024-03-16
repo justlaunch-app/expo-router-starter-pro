@@ -24,10 +24,6 @@ export { ErrorBoundary } from 'expo-router';
 
 const queryClient = new QueryClient();
 
-export const unstable_settings = {
-  initialRouteName: 'index',
-};
-
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
