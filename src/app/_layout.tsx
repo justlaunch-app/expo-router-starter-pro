@@ -1,12 +1,8 @@
-import { useEffect, useLayoutEffect, useMemo } from 'react';
+import { useEffect } from 'react';
 import { useFonts } from 'expo-font';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import {
-  Stack,
-  useRootNavigationState,
-  useSegments,
-  router,
-} from 'expo-router';
+import { Stack } from 'expo-router';
+import useProtectedRoute from '@hooks/auth/useProtectedRoute';
 import * as SplashScreen from 'expo-splash-screen';
 import { ThemeProvider } from '@react-navigation/native';
 import { DarkTheme, DefaultTheme } from '../utils/theme';
@@ -19,7 +15,6 @@ import {
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import i18n from '@locales/i18n';
 import { useColorScheme } from 'nativewind';
-import { useAuth } from 'src/store/authStore/auth.store';
 import '../../global.css';
 
 import { ClerkProvider } from '@clerk/clerk-expo';
@@ -34,38 +29,6 @@ export const unstable_settings = {
 };
 
 SplashScreen.preventAutoHideAsync();
-
-function useProtectedRoute() {
-  const segments = useSegments();
-  const rootNavigationState = useRootNavigationState();
-  const { user, tutorialCompleted } = useAuth(
-    ({ user, tutorialCompleted }) => ({ user, tutorialCompleted })
-  );
-  const isGuestMode = useAuth((state) => state.isGuestMode);
-
-  const navigationKey = useMemo(() => {
-    return rootNavigationState?.key;
-  }, [rootNavigationState]);
-
-  useLayoutEffect(() => {
-    const inAuthGroup = segments[0] === '(auth)';
-
-    if (!navigationKey) {
-      return;
-    }
-
-    if (isGuestMode && user?.email !== 'guest' && user?.password !== 'guest') {
-      router.replace('/');
-      return;
-    }
-
-    if (!user && !inAuthGroup) {
-      router.replace('/sign-in');
-    } else if (user && !tutorialCompleted) {
-      router.replace('/intro-steps');
-    }
-  }, [user, tutorialCompleted, segments, navigationKey, isGuestMode]);
-}
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
