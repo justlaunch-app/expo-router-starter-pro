@@ -1,10 +1,8 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { FontAwesome } from '@expo/vector-icons';
+import { IconProps } from '@srcTypes/Icon';
 
-export default function Icon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
-  color: string;
-  className?: string;
-  size?: number;
-}) {
-  return <FontAwesome className={props.className} size={props.size} {...props} />;
+export default function Icon(props: IconProps) {
+  return (
+    <FontAwesome className={props.className} size={props.size} {...props} />
+  );
 }
