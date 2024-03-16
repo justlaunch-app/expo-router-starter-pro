@@ -1,3 +1,8 @@
+import {
+  StartOAuthFlowParams,
+  StartOAuthFlowReturnType,
+} from '@clerk/clerk-expo';
+
 export type OAuthStrategy =
   | 'oauth_google'
   | 'oauth_facebook'
@@ -22,3 +27,9 @@ export type OAuthStrategy =
   | 'oauth_line'
   | 'oauth_box'
   | 'oauth_xero';
+
+export type OAuthFlow = {
+  startOAuthFlow: (
+    startOAuthFlowParams?: StartOAuthFlowParams
+  ) => Promise<StartOAuthFlowReturnType>;
+};
