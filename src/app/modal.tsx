@@ -1,3 +1,17 @@
+/**
+ * This is a simple modal screen.
+ * If you have multiple modals I would recommend to create a separate folder for them.
+ * This will help you to keep your codebase clean and organized.
+ * You need to define Modals as Screens in expo-router
+ * Here's an example:
+ *    <Stack.Screen
+        name="modal"
+        options={{
+          presentation: 'modal',
+        }}
+      />
+ * */
+
 import { View } from 'react-native';
 import { StyledText as Text } from '@components/core/Text/StyledText';
 import { ExternalLink } from '@components/core/Link/ExternalLink';

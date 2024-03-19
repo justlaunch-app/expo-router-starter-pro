@@ -1,3 +1,8 @@
+/**
+ * If somehow user accidentally navigates to a non-existing route, this screen will be shown.
+ * You can customize this screen by modifying the code below.
+ * */
+
 import { Link, Stack } from 'expo-router';
 import { Text, View } from 'react-native';
 import SafeAreaView from '@components/core/SafeAreaView/SafeAreaView';

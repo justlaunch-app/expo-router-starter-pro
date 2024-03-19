@@ -1,3 +1,9 @@
+/**
+ * From my experience working with expo-router on the web is a bit complicated and I would not recommend it.
+ * But if you want to use it, you can use the following code as a starting point.
+ * Hosting on the web needs additional setup
+ * */
+
 import { ScrollViewStyleReset } from 'expo-router/html';
 import React from 'react';
 
