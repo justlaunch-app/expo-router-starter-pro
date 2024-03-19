@@ -1,3 +1,16 @@
+/**
+ * Separator component
+ * @param text - optional text to display in the middle of the separator
+ * @param className - optional class name
+ * @param borderColor - optional border color
+ *
+ * @example
+ * <Separator text="or SSO" />
+ * <Separator text="or SSO" className="px-10 py-5" />
+ *
+ * @returns React.ReactNode
+ */
+
 import { View, Text } from 'react-native';
 import { cn } from '@utils/classNames';
 

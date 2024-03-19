@@ -1,3 +1,8 @@
+/**
+ * Simple button component that works on both web and mobile
+ * You can customize this button style by modifying buttonClasses in src/utils/buttonClasses.ts
+ */
+
 import {
   Button as RnButton,
   ButtonProps,
