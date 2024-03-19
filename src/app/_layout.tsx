@@ -22,6 +22,10 @@ import { tokenCache } from '@utils/tokenCache';
 
 export { ErrorBoundary } from 'expo-router';
 
+//Inject OneSignal - Only works with Expo Development Build
+// https://docs.expo.dev/develop/development-builds/introduction/
+// import '@services/onesignal';
+
 const queryClient = new QueryClient();
 
 SplashScreen.preventAutoHideAsync();

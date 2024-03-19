@@ -66,10 +66,17 @@ module.exports = {
       ],
       [
         "expo-tracking-transparency"
+      ],
+      [
+        "onesignal-expo-plugin",
+        {
+          mode: "development", // "production" | "development"
+        }
       ]
     ],
     extra: {
       clerkPublishableKey: 'pk_test_Zm9uZC1ld2UtMy5jbGVyay5hY2NvdW50cy5kZXYk',
+      oneSignalAppId: "<YOUR APP ID HERE>", //TODO: replace with your OneSignal App ID
       eas: {
         projectId: "cf2342ee-ad1a-4d42-a8ad-2ddde7172fa6"
       }
