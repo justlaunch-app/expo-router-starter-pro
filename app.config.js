@@ -57,6 +57,12 @@ module.exports = {
     plugins: [
       [
         'expo-router',
+      ],
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
+        }
       ]
     ],
     extra: {

@@ -1,6 +1,4 @@
-import { router } from 'expo-router';
-import { useAuth } from 'src/store/authStore/auth.store';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import {
   View,
   ScrollView,
@@ -8,10 +6,15 @@ import {
   Pressable,
   Text,
   NativeSyntheticEvent,
+  Platform,
   NativeScrollEvent,
 } from 'react-native';
 import SafeAreaView from '@components/core/SafeAreaView/SafeAreaView';
 import { SCREEN_WIDTH } from '@utils/deviceSize';
+import * as Location from 'expo-location';
+import Device from 'expo-device';
+import { router } from 'expo-router';
+import { useAuth } from 'src/store/authStore/auth.store';
 
 const tutorialData = [
   {
@@ -35,13 +38,37 @@ const tutorialData = [
 export default function IntroSteps() {
   const [activePageIndex, setActivePageIndex] = useState(0);
   const scrollViewRef = useRef<ScrollView>(null);
-
   const completeTutorial = useAuth((state) => state.completeTutorial);
+  const [permissionRequested, setPermissionRequested] = useState(false);
 
   const finishTutorial = () => {
     completeTutorial();
     router.replace('/');
   };
+
+  const requestLocationPermission = async () => {
+    if (Platform.OS === 'android' && !Device.isDevice) {
+      alert(
+        'Oops, this will not work on Snack in an Android Emulator. Try it on your device!'
+      );
+      return;
+    }
+    const { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== 'granted') {
+      alert('Permission to access location was denied');
+      return;
+    }
+
+    const location = await Location.getCurrentPositionAsync({});
+    console.log(location);
+  };
+
+  useEffect(() => {
+    if (activePageIndex === 1 && !permissionRequested) {
+      requestLocationPermission();
+      setPermissionRequested(true);
+    }
+  }, [activePageIndex, permissionRequested]);
 
   const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const newPageIndex = Math.round(
