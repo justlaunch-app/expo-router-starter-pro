@@ -1,26 +1,38 @@
+/**
+ * This is the main layout file for the application.
+ * It is the first file that is loaded when the application starts.
+ * It is responsible for setting up the application's theme, fonts, and other global settings.
+ * It behaves really similar as Next.js layout. If you want to add shared logic this is the place for that
+ * */
+
 import { useEffect } from 'react';
+import { Stack } from 'expo-router';
+export { ErrorBoundary } from 'expo-router';
+import * as SplashScreen from 'expo-splash-screen';
+import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Stack } from 'expo-router';
-import useProtectedRoute from '@hooks/auth/useProtectedRoute';
-import * as SplashScreen from 'expo-splash-screen';
-import { ThemeProvider } from '@react-navigation/native';
-import { DarkTheme, DefaultTheme } from '../utils/theme';
-import { I18nextProvider } from 'react-i18next';
-import { StatusBar } from 'expo-status-bar';
 import {
   SafeAreaProvider,
   initialWindowMetrics,
 } from 'react-native-safe-area-context';
+
+import useProtectedRoute from '@hooks/auth/useProtectedRoute';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+// Internalization
+import { I18nextProvider } from 'react-i18next';
 import i18n from '@locales/i18n';
+
+// Nativewind - Tailwind CSS + Dark Mode
 import { useColorScheme } from 'nativewind';
 import '../../global.css';
+import { ThemeProvider } from '@react-navigation/native';
+import { DarkTheme, DefaultTheme } from 'src/utils/theme';
 
+//Authentication with Clerk
 import { ClerkProvider } from '@clerk/clerk-expo';
 import { tokenCache } from '@utils/tokenCache';
-
-export { ErrorBoundary } from 'expo-router';
 
 /**
  * Inject OneSignal - Only works with Expo Development Build
@@ -34,10 +46,11 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+    SpaceMono: require('src/assets/fonts/SpaceMono-Regular.ttf'),
     ...FontAwesome.font,
   });
 
+  // useProtectedRoute behaves as a middleware in our application
   useProtectedRoute();
 
   useEffect(() => {
