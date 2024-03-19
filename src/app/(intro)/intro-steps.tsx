@@ -15,6 +15,7 @@ import * as Location from 'expo-location';
 import Device from 'expo-device';
 import { router } from 'expo-router';
 import { useAuth } from 'src/store/authStore/auth.store';
+import { requestTrackingPermissionsAsync } from 'expo-tracking-transparency';
 
 const tutorialData = [
   {
@@ -67,6 +68,14 @@ export default function IntroSteps() {
     if (activePageIndex === 1 && !permissionRequested) {
       requestLocationPermission();
       setPermissionRequested(true);
+    }
+    if (activePageIndex === tutorialData.length - 1) {
+      (async () => {
+        const { status } = await requestTrackingPermissionsAsync();
+        if (status === 'granted') {
+          console.log('Yay! I have user permission to track data');
+        }
+      })();
     }
   }, [activePageIndex, permissionRequested]);
 
