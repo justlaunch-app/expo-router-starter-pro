@@ -1,10 +1,11 @@
 import { View } from 'react-native';
+import { cn } from '@utils/classNames';
 import { deviceBrand, deviceName, deviceOS, deviceModel } from '@config/device';
 import { StyledText as Text } from '@components/core/Text/StyledText';
 
-export default function AppVersion() {
+export default function AppVersion(className?: string) {
   return (
-    <View className="py-2 rounded-lg">
+    <View className={cn('py-2', className)}>
       <Text>
         {`Device Brand: ${deviceBrand}`}
         {`\nDevice Name: ${deviceName}`}
