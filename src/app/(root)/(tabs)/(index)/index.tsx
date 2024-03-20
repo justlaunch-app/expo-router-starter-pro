@@ -4,7 +4,7 @@ import SafeAreaView from '@components/core/SafeAreaView/SafeAreaView';
 import { useAuth } from 'src/store/authStore/auth.store';
 import { Carousel } from '@components/ui/Carousel/Carousel';
 import { ExternalLink as Link } from '@components/core/Link/ExternalLink';
-import Header from '@components/ui/Header/Header';
+import { Header } from '@components/ui/Header/Header';
 import feed from '@assets/data/feed.json';
 import { viewportWidth, spacing } from '@utils/viewport';
 
