@@ -6,7 +6,7 @@ import { useLocalSearchParams, Stack } from 'expo-router';
 import { blurhash } from '@utils/blurhash';
 import * as Sharing from 'expo-sharing';
 import TouchableOpacity from '@components/core/Button/TouchableOpacity';
-import Icon from '@components/core/Icon/Icon';
+import { Icon } from '@components/core/Icon/Icon';
 import { useColorScheme } from 'nativewind';
 
 const DetailFeed = () => {
