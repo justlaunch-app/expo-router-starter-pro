@@ -1,8 +1,8 @@
 import { Icon } from '@components/core/Icon/Icon';
 import { Text } from 'react-native';
 import TouchableOpacity from '@components/core/Button/TouchableOpacity';
-import { cn } from '@utils/classNames';
-import { OAuthSignIn } from '@utils/auth/oAuthSignIn';
+import { cn } from '@lib/cn';
+import { OAuthSignIn } from '@lib/auth/oAuthSignIn';
 import { OAuthStrategy } from '@srcTypes/OAuth';
 import { IconProps } from '@srcTypes/Icon';
 import { useOAuth } from '@clerk/clerk-expo';

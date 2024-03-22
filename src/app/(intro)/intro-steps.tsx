@@ -10,7 +10,7 @@ import {
   NativeScrollEvent,
 } from 'react-native';
 import SafeAreaView from '@components/core/SafeAreaView/SafeAreaView';
-import { SCREEN_WIDTH } from '@utils/deviceSize';
+import { SCREEN_WIDTH } from '@lib/deviceSize';
 import * as Location from 'expo-location';
 import Device from 'expo-device';
 import { router } from 'expo-router';

@@ -1,7 +1,7 @@
 import SafeAreaView from '@components/core/SafeAreaView/SafeAreaView';
 import { MaterialTopTabs } from '@layouts/material-top-tabs';
 import useHeaderVisibility from '@hooks/useHeaderVisibility';
-import { SCREEN_WIDTH } from '@utils/deviceSize';
+import { SCREEN_WIDTH } from '@lib/deviceSize';
 
 export default function IndexTopTabsLayout() {
   useHeaderVisibility(false);

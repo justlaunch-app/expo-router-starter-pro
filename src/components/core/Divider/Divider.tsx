@@ -1,5 +1,13 @@
 import { View } from 'react-native';
+import { cn } from '@lib/cn';
 
-export default function Divider() {
-  return <View className="border-t border-4 border-gray-700 my-2 rounded" />;
-}
+export const Divider = (className: string) => {
+  return (
+    <View
+      className={cn(
+        'border-t border-4 border-gray-700 my-2 rounded',
+        className
+      )}
+    />
+  );
+};

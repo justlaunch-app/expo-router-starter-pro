@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 import { StyledText as Text } from '@components/core/Text/StyledText';
-import { cn } from '@utils/classNames';
+import { cn } from '@lib/cn';
 import { Picker } from '@react-native-picker/picker';
 import { useTranslation } from 'react-i18next';
 import { useLang } from 'src/store/langStore/lang.store';
@@ -11,7 +11,9 @@ const languages = [
   { label: 'Spanish', value: 'es' },
 ];
 
-export default function LanguagePicker({ className }: { className?: string }) {
+export default function LanguagePicker({
+  className,
+}: Readonly<{ className?: string }>) {
   const { t } = useTranslation();
   const { colorScheme } = useColorScheme();
 

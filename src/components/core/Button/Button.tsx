@@ -11,7 +11,7 @@ import {
   PressableProps,
   Text,
 } from 'react-native';
-import { buttonClasses } from '@utils/buttonClasses';
+import { buttonClasses } from '@lib/buttonClasses';
 
 type Props = PressableProps & ButtonProps;
 export function Button(props: Props) {

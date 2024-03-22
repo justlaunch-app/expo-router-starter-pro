@@ -28,11 +28,11 @@ import i18n from '@locales/i18n';
 import { useColorScheme } from 'nativewind';
 import '../../global.css';
 import { ThemeProvider } from '@react-navigation/native';
-import { DarkTheme, DefaultTheme } from 'src/utils/theme';
+import { DarkTheme, DefaultTheme } from '@lib/theme';
 
 //Authentication with Clerk
 import { ClerkProvider } from '@clerk/clerk-expo';
-import { tokenCache } from '@utils/tokenCache';
+import { tokenCache } from '@lib/tokenCache';
 
 /**
  * Inject OneSignal - Only works with Expo Development Build

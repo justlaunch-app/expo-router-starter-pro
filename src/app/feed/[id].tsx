@@ -3,7 +3,7 @@ import { StyledText as Text } from '@components/core/Text/StyledText';
 import { Image } from 'expo-image';
 import SafeAreaView from '@components/core/SafeAreaView/SafeAreaView';
 import { useLocalSearchParams, Stack } from 'expo-router';
-import { blurhash } from '@utils/blurhash';
+import { blurhash } from '@lib/blurhash';
 import * as Sharing from 'expo-sharing';
 import TouchableOpacity from '@components/core/Button/TouchableOpacity';
 import { Icon } from '@components/core/Icon/Icon';

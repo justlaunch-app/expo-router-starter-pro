@@ -12,7 +12,7 @@
  */
 
 import { View, Text } from 'react-native';
-import { cn } from '@utils/classNames';
+import { cn } from '@lib/cn';
 
 export const Separator = ({
   text,

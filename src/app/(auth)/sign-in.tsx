@@ -7,14 +7,14 @@ import { useAuth as zustandUseAuth } from 'src/store/authStore/auth.store';
 import { useTranslation } from 'react-i18next';
 import { signInSchema } from '@schemas/auth.schema';
 import { Label } from '@components/core/Label/StyledLabel';
-import { Alert } from '@utils/Alert';
+import { Alert } from '@lib/Alert';
 import TouchableOpacity from '@components/core/Button/TouchableOpacity';
 import { useSignIn } from '@clerk/clerk-expo';
 import SignInWithOAuth from '@components/ui/OAuth/SignInWithOAuth';
 import SafeAreaView from '@components/core/SafeAreaView/SafeAreaView';
 import { Separator } from '@components/core/Separator/Separator';
-import { buttonClasses } from '@utils/buttonClasses';
-import { cn } from '@utils/classNames';
+import { buttonClasses } from '@lib/buttonClasses';
+import { cn } from '@lib/cn';
 
 export default function SignIn() {
   const { t } = useTranslation();

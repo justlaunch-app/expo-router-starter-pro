@@ -16,7 +16,7 @@ export function StyledText({
   selectable = false,
   fontFamily,
   style,
-}: StyledTextProps) {
+}: Readonly<StyledTextProps>) {
   const { colorScheme } = useColorScheme();
   const color = colorScheme === 'dark' ? 'white' : 'black';
 

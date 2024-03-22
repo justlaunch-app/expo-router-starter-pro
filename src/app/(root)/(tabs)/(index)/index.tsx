@@ -6,7 +6,7 @@ import { Carousel } from '@components/ui/Carousel/Carousel';
 import { ExternalLink as Link } from '@components/core/Link/ExternalLink';
 import { Header } from '@components/ui/Header/Header';
 import feed from '@assets/data/feed.json';
-import { viewportWidth, spacing } from '@utils/viewport';
+import { viewportWidth, spacing } from '@lib/viewport';
 
 export default function Index() {
   const { isGuestMode } = useAuth();

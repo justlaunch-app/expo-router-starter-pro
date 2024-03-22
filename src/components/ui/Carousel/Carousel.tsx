@@ -6,7 +6,7 @@ import {
   View,
   FlatList,
 } from 'react-native';
-import { viewportWidth, spacing } from '@utils/viewport';
+import { viewportWidth, spacing } from '@lib/viewport';
 
 interface CarouselProps<T extends Array<unknown>> {
   data: T;

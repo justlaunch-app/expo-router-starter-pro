@@ -5,7 +5,7 @@
  */
 
 import { MaterialTopTabs } from '@layouts/material-top-tabs';
-import { SCREEN_WIDTH } from '@utils/deviceSize';
+import { SCREEN_WIDTH } from '@lib/deviceSize';
 
 export default function IndexTopTabsLayout() {
   return (

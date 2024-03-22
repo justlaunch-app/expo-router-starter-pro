@@ -1,5 +1,5 @@
 import { View } from 'react-native';
-import { cn } from '@utils/classNames';
+import { cn } from '@lib/cn';
 import appVersion from '@config/version';
 import { StyledText as Text } from '@components/core/Text/StyledText';
 
