@@ -4,11 +4,13 @@ import { Pressable } from 'react-native';
 import { useColorScheme } from 'nativewind';
 import { useTranslation } from 'react-i18next';
 
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
-  color: string;
-  className?: string;
-}) {
+function TabBarIcon(
+  props: Readonly<{
+    name: React.ComponentProps<typeof FontAwesome>['name'];
+    color: string;
+    className?: string;
+  }>
+) {
   return (
     <FontAwesome
       className={props.className}
