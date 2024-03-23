@@ -1,7 +1,7 @@
 import { useNavigation } from 'expo-router';
 import { useLayoutEffect } from 'react';
 
-export const useSetTitle = (title: string) => {
+export const useSetTitle = ({ title }: { title: string }) => {
   const { setOptions } = useNavigation();
 
   useLayoutEffect(() => {
