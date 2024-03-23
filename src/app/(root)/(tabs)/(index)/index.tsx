@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { Text, View } from 'react-native';
-import SafeAreaView from '@components/core/SafeAreaView/SafeAreaView';
+import { SafeAreaView } from '@components/core/SafeAreaView/SafeAreaView';
 import { useAuth } from 'src/store/authStore/auth.store';
 import { Carousel } from '@components/ui/Carousel/Carousel';
 import { ExternalLink as Link } from '@components/core/Link/ExternalLink';

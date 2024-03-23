@@ -3,7 +3,7 @@ import { cn } from '@lib/cn';
 import { deviceBrand, deviceName, deviceOS, deviceModel } from '@config/device';
 import { StyledText as Text } from '@components/core/Text/StyledText';
 
-export default function AppVersion(className?: string) {
+export function AppVersion(className?: string) {
   return (
     <View className={cn('py-2', className)}>
       <Text>

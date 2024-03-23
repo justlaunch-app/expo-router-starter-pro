@@ -1,20 +1,19 @@
-import { View } from 'react-native';
+import { View, Modal, Pressable } from 'react-native';
 import { StyledText as Text } from '@components/core/Text/StyledText';
-import { Modal, Pressable } from 'react-native';
-import LanguagePicker from '@components/ui/Picker/LanguagePicker';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import IonIcons from '@expo/vector-icons/Ionicons';
 import { useTranslation } from 'react-i18next';
-import AppVersion from '@components/ui/Device/AppVersion';
+import { AppVersion } from '@components/ui/Device/AppVersion';
 import { useColorScheme } from 'nativewind';
+import LanguagePicker from '@components/ui/Picker/LanguagePicker';
 
 export function LanguagePickerModal({
   visible,
   close,
-}: {
+}: Readonly<{
   visible: boolean;
   close: () => void;
-}) {
+}>) {
   const { top } = useSafeAreaInsets();
   const { t } = useTranslation();
   const { colorScheme } = useColorScheme();
@@ -39,9 +38,7 @@ export function LanguagePickerModal({
           <View className="relativ bg-transparente">
             <LanguagePicker />
           </View>
-          <View className="">
-            <AppVersion />
-          </View>
+          <AppVersion />
         </View>
       </View>
     </Modal>

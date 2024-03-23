@@ -1,7 +1,7 @@
 import { View, ScrollView } from 'react-native';
 import { StyledText as Text } from '@components/core/Text/StyledText';
 import { Image } from 'expo-image';
-import SafeAreaView from '@components/core/SafeAreaView/SafeAreaView';
+import { SafeAreaView } from '@components/core/SafeAreaView/SafeAreaView';
 import { useLocalSearchParams, Stack } from 'expo-router';
 import { blurhash } from '@lib/blurhash';
 import * as Sharing from 'expo-sharing';

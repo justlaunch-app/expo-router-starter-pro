@@ -3,7 +3,7 @@ import { Article } from '@srcTypes/Article';
 import { FeedLink } from '@components/ui/Feed/FeedLink';
 
 import feedData from '@assets/data/feed.json';
-import SafeAreaView from '@components/core/SafeAreaView/SafeAreaView';
+import { SafeAreaView } from '@components/core/SafeAreaView/SafeAreaView';
 
 interface RenderItemProps {
   item: Article;

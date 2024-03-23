@@ -11,7 +11,7 @@ import { Alert } from '@lib/Alert';
 import TouchableOpacity from '@components/core/Button/TouchableOpacity';
 import { useSignIn } from '@clerk/clerk-expo';
 import SignInWithOAuth from '@components/ui/OAuth/SignInWithOAuth';
-import SafeAreaView from '@components/core/SafeAreaView/SafeAreaView';
+import { SafeAreaView } from '@components/core/SafeAreaView/SafeAreaView';
 import { Separator } from '@components/core/Separator/Separator';
 import { buttonClasses } from '@lib/buttonClasses';
 import { cn } from '@lib/cn';
