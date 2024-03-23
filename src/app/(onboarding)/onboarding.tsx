@@ -17,24 +17,8 @@ import { router } from 'expo-router';
 import { useAuth } from 'src/store/authStore/auth.store';
 import { requestTrackingPermissionsAsync } from 'expo-tracking-transparency';
 
-const tutorialData = [
-  {
-    title: 'Find Your Next Destination',
-    description: 'Browse through our list of cities based on your preferences.',
-    image: require('../../assets/images/Illustraions.png'),
-  },
-  {
-    title: 'Discover Nomad Page',
-    description: 'Where you can create a budget read upon taxes and more.',
-    image: require('../../assets/images/Illustraions.png'),
-  },
-  {
-    title: 'Get Started',
-    description:
-      'Enjoy your new life in a new city and do not forget to share your experience with us on Discord',
-    image: require('../../assets/images/Illustraions.png'),
-  },
-];
+//ONBOARDING DATA
+import onboarding from '@assets/data/onboarding.json';
 
 export default function IntroSteps() {
   const [activePageIndex, setActivePageIndex] = useState(0);
@@ -69,7 +53,7 @@ export default function IntroSteps() {
       requestLocationPermission();
       setPermissionRequested(true);
     }
-    if (activePageIndex === tutorialData.length - 1) {
+    if (activePageIndex === onboarding.length - 1) {
       (async () => {
         const { status } = await requestTrackingPermissionsAsync();
         if (status === 'granted') {
@@ -97,17 +81,13 @@ export default function IntroSteps() {
         onScroll={handleScroll}
         scrollEventThrottle={16}
       >
-        {tutorialData.map((item, index) => (
+        {onboarding.map((item) => (
           <View
-            key={index}
+            key={item.title}
             className={`flex-1 justify-center items-center my-7.5`}
             style={{ width: SCREEN_WIDTH }}
           >
-            <Image
-              source={item.image}
-              className="w-full h-3/5"
-              resizeMode="cover"
-            />
+            <Image className="w-full h-3/5" resizeMode="cover" />
             <View className="px-5">
               <Text className="text-4xl font-bold text-black text-center mb-2.5">
                 {item.title}
@@ -120,7 +100,7 @@ export default function IntroSteps() {
         ))}
       </ScrollView>
       <View className="flex-row justify-center items-center pb-10">
-        {tutorialData.map((_, index) => (
+        {onboarding.map((_, index) => (
           <View
             key={index}
             className={`h-2.5 w-2.5 mx-1.5 rounded-full ${
@@ -129,7 +109,7 @@ export default function IntroSteps() {
           />
         ))}
       </View>
-      {activePageIndex < tutorialData.length - 1 ? (
+      {activePageIndex < onboarding.length - 1 ? (
         <Pressable
           className="absolute bottom-20 left-5 right-5 bg-teal-500 px-5 py-2.5 rounded-lg items-center"
           onPress={() => {
