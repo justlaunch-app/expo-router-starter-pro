@@ -1,7 +1,7 @@
 import { useLayoutEffect } from 'react';
 import { useNavigation } from 'expo-router';
 
-const useHeaderVisibility = ({ isVisible }: { isVisible: boolean }) => {
+const useHeaderVisibility = (isVisible: boolean) => {
   const { setOptions } = useNavigation();
 
   useLayoutEffect(() => {
