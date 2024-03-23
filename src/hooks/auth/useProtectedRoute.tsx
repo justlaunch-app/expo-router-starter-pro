@@ -31,7 +31,7 @@ export default function useProtectedRoute() {
     if (!user && !inAuthGroup) {
       router.replace('/sign-in');
     } else if (user && !tutorialCompleted) {
-      router.replace('/intro-steps');
+      router.replace('/onboarding');
     }
   }, [user, tutorialCompleted, segments, navigationKey, isGuestMode]);
 }
