@@ -31,8 +31,7 @@ import { ThemeProvider } from '@react-navigation/native';
 import { DarkTheme, DefaultTheme } from '@lib/theme';
 
 //Authentication with Clerk
-import { ClerkProvider } from '@clerk/clerk-expo';
-import { tokenCache } from '@lib/tokenCache';
+import { AuthProvider } from '@context/AuthProvider';
 
 /**
  * Inject OneSignal - Only works with Expo Development Build
@@ -76,10 +75,7 @@ function RootLayoutNav() {
   const { colorScheme } = useColorScheme();
 
   return (
-    <ClerkProvider
-      tokenCache={tokenCache}
-      publishableKey="pk_test_Zm9uZC1ld2UtMy5jbGVyay5hY2NvdW50cy5kZXYk"
-    >
+    <AuthProvider>
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <I18nextProvider i18n={i18n}>
           <QueryClientProvider client={queryClient}>
@@ -98,6 +94,6 @@ function RootLayoutNav() {
           </QueryClientProvider>
         </I18nextProvider>
       </ThemeProvider>
-    </ClerkProvider>
+    </AuthProvider>
   );
 }
