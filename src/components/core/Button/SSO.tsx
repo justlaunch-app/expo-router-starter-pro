@@ -1,3 +1,25 @@
+/**
+ *
+ * SSOButton component
+ * @description
+ * A component that renders a button for signing in with OAuth.
+ *
+ * @module Button
+ * @param classNames
+ * @param icon
+ * @param strategy
+ * @param textColor
+ * @returns
+ *
+ * @example
+ * <SSOButton
+ *  classNames="bg-red-500 flex p-4 rounded-2xl gap-3 flex-row items-center m-2"
+ * icon={{ name: 'google', color: 'white', size: 20 }}
+ * strategy="google_oauth2"
+ * textColor="text-white"
+ * />
+ */
+
 import { Icon } from '@components/core/Icon/Icon';
 import { Text } from 'react-native';
 import TouchableOpacity from '@components/core/Button/TouchableOpacity';

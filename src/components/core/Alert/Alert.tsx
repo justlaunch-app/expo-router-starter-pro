@@ -1,3 +1,16 @@
+/**
+ *
+ * Alert component
+ * @description
+ * A component that renders an alert dialog.
+ * @module Alert
+ * @param {string} title - The title of the alert.
+ * @param {string} description - The description of the alert.
+ * @param {AlertOptions} options - The options of the alert.
+ * @return {void}
+ *
+ */
+
 import { Platform, Alert as DefaultRNAlert } from 'react-native';
 
 type AlertOption = {

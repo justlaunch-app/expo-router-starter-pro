@@ -1,16 +1,27 @@
-import { cn } from '@utils/classNames';
+/**
+ * IconButton component
+ * @description
+ * A component that renders a button with an icon.
+ * @module Button
+ * @param {Record<string, boolean>} className - The class name of the button.
+ * @param {PressableProps} props - The props of the button.
+ * @return {React.FC<IconButtonProps>}
+ *
+ */
+
+import { cn } from '@lib/cn';
 import { useColorScheme } from 'nativewind';
 import { View, Platform, Pressable, PressableProps } from 'react-native';
 
 type IconButtonProps = Omit<PressableProps, 'className'> & {
-  classNames?: Record<string, boolean>;
+  className?: Record<string, boolean>;
 };
 
-export function IconButton({
-  classNames: _classNames,
+export const IconButton = ({
+  className,
   children,
   ...props
-}: IconButtonProps) {
+}: IconButtonProps) => {
   const { colorScheme } = useColorScheme();
 
   return (
@@ -20,7 +31,7 @@ export function IconButton({
         'active:text-slate-100': Platform.OS === 'ios',
         'bg-white': colorScheme === 'light',
         'bg-slate-900': colorScheme === 'dark',
-        ..._classNames,
+        ...className,
       })}
     >
       <Pressable className="w-full h-full p-4" {...props}>
@@ -28,4 +39,4 @@ export function IconButton({
       </Pressable>
     </View>
   );
-}
+};
