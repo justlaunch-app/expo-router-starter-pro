@@ -58,7 +58,7 @@ export default function RootLayout() {
     async function loadUserSession() {
       const userSession = await SecureStore.getItemAsync('user');
       if (userSession) {
-        console.log('Restoring user session', userSession);
+        // Set the user session in the auth store
         setAuthUser(JSON.parse(userSession));
       }
     }

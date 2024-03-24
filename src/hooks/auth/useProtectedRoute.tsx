@@ -32,9 +32,6 @@ export default function useProtectedRoute() {
     return rootNavigationState?.key;
   }, [rootNavigationState]);
 
-  console.log('user ', user);
-  console.log('navigationKey', navigationKey);
-  console.log('tutorial', tutorialCompleted);
   useLayoutEffect(() => {
     const inAuthGroup = segments[0] === '(auth)';
 

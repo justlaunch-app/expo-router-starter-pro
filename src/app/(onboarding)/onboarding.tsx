@@ -49,8 +49,7 @@ export default function IntroSteps() {
       return;
     }
     setLocationPermissionDenied(false);
-    const location = await Location.getCurrentPositionAsync({});
-    console.log(location);
+    await Location.getCurrentPositionAsync({});
   };
 
   useEffect(() => {
