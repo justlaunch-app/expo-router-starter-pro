@@ -31,7 +31,7 @@ export default function Settings() {
           <LanguagePicker className="mx-auto" />
         </View>
 
-        {!user && (
+        {user && (
           <Text
             onPress={() => {
               logOut();

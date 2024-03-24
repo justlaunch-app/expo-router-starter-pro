@@ -17,8 +17,11 @@ import {
   initialWindowMetrics,
 } from 'react-native-safe-area-context';
 
+// Authentication
 import useProtectedRoute from '@hooks/auth/useProtectedRoute';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import * as SecureStore from 'expo-secure-store';
+import { useAuth } from 'src/store/authStore/auth.store';
 
 // Internalization
 import { I18nextProvider } from 'react-i18next';
@@ -48,6 +51,20 @@ export default function RootLayout() {
     SpaceMono: require('src/assets/fonts/SpaceMono-Regular.ttf'),
     ...FontAwesome.font,
   });
+
+  // Load user session from SecureStore if it exists
+  const setAuthUser = useAuth((state) => state.setUser);
+  useEffect(() => {
+    async function loadUserSession() {
+      const userSession = await SecureStore.getItemAsync('user');
+      if (userSession) {
+        console.log('Restoring user session', userSession);
+        setAuthUser(JSON.parse(userSession));
+      }
+    }
+
+    loadUserSession();
+  }, [setAuthUser]);
 
   // useProtectedRoute behaves as a middleware in our application
   useProtectedRoute();

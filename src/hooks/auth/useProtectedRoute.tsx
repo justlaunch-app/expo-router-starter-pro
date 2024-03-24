@@ -1,21 +1,40 @@
-import { useLayoutEffect, useMemo } from 'react';
+/**
+ * This hook is used to protect routes that require authentication.
+ * It redirects the user to the sign-in page if they are not authenticated.
+ * If the user is authenticated but hasn't completed the tutorial, it redirects them to the onboarding page.
+ * If the user is a guest, it allows them to stay on the current page.
+ *
+ * If you want to add more conditions, you can add them to the `useLayoutEffect` hook. -> useLayoutEffect hook is used to perform side effects before anything is painted on the screen.
+ */
 
-import { useRootNavigationState, useSegments, router } from 'expo-router';
+import { useLayoutEffect, useMemo } from 'react';
+import {
+  useRootNavigationState,
+  useSegments,
+  router,
+  usePathname,
+} from 'expo-router';
 import { useAuth } from 'src/store/authStore/auth.store';
-export { ErrorBoundary } from 'expo-router';
 
 export default function useProtectedRoute() {
   const segments = useSegments();
+  const path = usePathname();
   const rootNavigationState = useRootNavigationState();
-  const { user, tutorialCompleted } = useAuth(
-    ({ user, tutorialCompleted }) => ({ user, tutorialCompleted })
+  const { user, tutorialCompleted, isGuestMode } = useAuth(
+    ({ user, tutorialCompleted, isGuestMode }) => ({
+      user,
+      tutorialCompleted,
+      isGuestMode,
+    })
   );
-  const isGuestMode = useAuth((state) => state.isGuestMode);
 
   const navigationKey = useMemo(() => {
     return rootNavigationState?.key;
   }, [rootNavigationState]);
 
+  console.log('user ', user);
+  console.log('navigationKey', navigationKey);
+  console.log('tutorial', tutorialCompleted);
   useLayoutEffect(() => {
     const inAuthGroup = segments[0] === '(auth)';
 
@@ -23,15 +42,27 @@ export default function useProtectedRoute() {
       return;
     }
 
-    if (isGuestMode && user?.email !== 'guest' && user?.password !== 'guest') {
-      router.replace('/');
+    // Avoid redirects if user is a guest, allowing them to stay on the current page
+    if (isGuestMode) {
       return;
     }
 
+    // Redirect to sign-in if there's no user and not already on an auth route
     if (!user && !inAuthGroup) {
       router.replace('/sign-in');
-    } else if (user && !tutorialCompleted) {
+      return;
+    }
+
+    // Redirect to onboarding if the user exists but hasn't completed the tutorial
+    if (user && !tutorialCompleted) {
       router.replace('/onboarding');
     }
-  }, [user, tutorialCompleted, segments, navigationKey, isGuestMode]);
+
+    // Redirect to home if the user exists and has completed the tutorial
+    if (user && tutorialCompleted) {
+      if (path === '/sign-in' || path === 'sign-up' || path === 'onboarding') {
+        router.replace('/');
+      }
+    }
+  }, [user, tutorialCompleted, segments, navigationKey, isGuestMode, path]);
 }
