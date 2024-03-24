@@ -1,3 +1,12 @@
+/**
+ * OAuthSignIn - Signs in a user with OAuth. - Clerk
+ *
+ * @param {OAuthFlow} oAuthFlow - The OAuth flow object.
+ * @return {void}
+ *
+ * DO NOT MODIFY THIS FILE.
+ */
+
 import { OAuthFlow } from '@srcTypes/OAuth';
 
 export const OAuthSignIn = async (oAuthFlow: OAuthFlow) => {
