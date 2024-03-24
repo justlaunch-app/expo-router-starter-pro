@@ -3,6 +3,8 @@ import {
   View,
   ScrollView,
   Image,
+  Alert,
+  Linking,
   Pressable,
   Text,
   NativeSyntheticEvent,
@@ -25,6 +27,8 @@ export default function IntroSteps() {
   const scrollViewRef = useRef<ScrollView>(null);
   const completeTutorial = useAuth((state) => state.completeTutorial);
   const [permissionRequested, setPermissionRequested] = useState(false);
+  const [locationPermissionDenied, setLocationPermissionDenied] =
+    useState(false);
 
   const finishTutorial = () => {
     completeTutorial();
@@ -33,17 +37,18 @@ export default function IntroSteps() {
 
   const requestLocationPermission = async () => {
     if (Platform.OS === 'android' && !Device.isDevice) {
-      alert(
+      Alert.alert(
         'Oops, this will not work on Snack in an Android Emulator. Try it on your device!'
       );
       return;
     }
     const { status } = await Location.requestForegroundPermissionsAsync();
     if (status !== 'granted') {
-      alert('Permission to access location was denied');
+      Alert.alert('Permission to access location was denied');
+      setLocationPermissionDenied(true);
       return;
     }
-
+    setLocationPermissionDenied(false);
     const location = await Location.getCurrentPositionAsync({});
     console.log(location);
   };
@@ -56,12 +61,36 @@ export default function IntroSteps() {
     if (activePageIndex === onboarding.length - 1) {
       (async () => {
         const { status } = await requestTrackingPermissionsAsync();
-        if (status === 'granted') {
-          console.log('Yay! I have user permission to track data');
+        if (status !== 'granted') {
+          Alert.alert(
+            'Tracking Permission',
+            'Would you like to enable tracking to improve your experience?',
+            [
+              { text: 'Not Now', style: 'cancel' },
+              { text: 'Open Settings', onPress: () => Linking.openSettings() }, // Open settings for the user to change permissions
+            ]
+          );
         }
       })();
     }
   }, [activePageIndex, permissionRequested]);
+
+  // Additional useEffect to handle re-prompting location permission
+  useEffect(() => {
+    // You can modify this logic to fit when you want to re-prompt
+    // For example, based on specific user actions that indicate they might benefit from the feature requiring permissions
+    if (locationPermissionDenied && activePageIndex === 2) {
+      // Example condition, adjust as needed
+      Alert.alert(
+        'Location Permission',
+        'Our app needs location access to offer better services. Would you like to reconsider?',
+        [
+          { text: 'Not Now', style: 'cancel' },
+          { text: 'Yes', onPress: requestLocationPermission },
+        ]
+      );
+    }
+  }, [activePageIndex, locationPermissionDenied]);
 
   const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const newPageIndex = Math.round(
