@@ -9,6 +9,8 @@ type Theme = {
     text: string;
     border: string;
     notification: string;
+    navigation?: string;
+    navigationActive?: string;
   };
 };
 
@@ -21,6 +23,8 @@ export const DefaultTheme: Theme = {
     text: colors.gray[900],
     border: colors.gray[200],
     notification: colors.pink[500],
+    navigation: colors.blue[500],
+    navigationActive: colors.blue[700],
   },
 };
 
@@ -33,5 +37,7 @@ export const DarkTheme: Theme = {
     text: colors.white,
     border: colors.gray[700],
     notification: colors.pink[500],
+    navigation: colors.blue[500],
+    navigationActive: colors.blue[300],
   },
 };
