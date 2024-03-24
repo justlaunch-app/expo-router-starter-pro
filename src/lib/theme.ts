@@ -1,3 +1,16 @@
+/**
+ * Theme
+ * @description Theme configuration for the application
+ * @type {Theme}
+ *
+ * @see https://tailwindcss.com/docs/customizing-colors
+ *
+ * You can change the theme colors by modifying the DefaultTheme and DarkTheme variables. You can also add more themes by creating a new variable.
+ *
+ * For adding custom colors to the base tailwindcss/colors you need to add the color to the tailwind.config.js file.
+ *
+ */
+
 import colors from 'tailwindcss/colors';
 
 type Theme = {
