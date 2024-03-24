@@ -13,4 +13,6 @@ export type LucideIconProps = {
   name: keyof typeof icons;
   color?: ColorValue;
   size?: LucideProps['size'];
+  className?: string;
+  strokeWidth?: LucideProps['strokeWidth'];
 };

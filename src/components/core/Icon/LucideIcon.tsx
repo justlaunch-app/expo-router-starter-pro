@@ -6,6 +6,8 @@
  * @param {string} name - The name of the icon to render.
  * @param {string} color - The color of the icon.
  * @param {number} size - The size of the icon.
+ * @param {string} className - The class name of the icon.
+ * @param {number} strokeWidth - The stroke width of the icon. (default: 2 in Lucide)
  * @return {React.FC<LucideIconProps>}
  * @example
  * import Icon from '@components/core/Icon/LucideIcon';
@@ -25,11 +27,22 @@ import { icons, LucideProps } from 'lucide-react-native';
 import { ColorValue } from 'react-native';
 import { LucideIconProps } from '@srcTypes/Icon';
 
-const Icon: React.FC<LucideIconProps> = ({ name, color, size }) => {
+export const Icon: React.FC<LucideIconProps> = ({
+  name,
+  color,
+  size,
+  className,
+  strokeWidth = 1,
+}) => {
   const LucideIcon: React.FC<LucideProps & { color?: ColorValue }> =
     icons[name];
 
-  return <LucideIcon color={color} size={size} />;
+  return (
+    <LucideIcon
+      strokeWidth={strokeWidth}
+      className={className}
+      color={color}
+      size={size}
+    />
+  );
 };
-
-export default Icon;
