@@ -1,4 +1,4 @@
-import { Link, Tabs, useSegments } from 'expo-router';
+import { Link, Tabs, usePathname } from 'expo-router';
 import { Icon } from '@components/core/Icon/LucideIcon';
 import { Pressable } from 'react-native';
 import { useColorScheme } from 'nativewind';
@@ -9,13 +9,12 @@ const HeaderRight = () => {
   const { colorScheme } = useColorScheme();
 
   return (
-    <Link href="/modal" asChild>
+    <Link href="/modal" asChild className="mr-2">
       <Pressable>
         {() => (
           <Icon
-            name="Badge"
+            name="Star"
             color={colorScheme === 'dark' ? 'white' : 'black'}
-            className="mr-3"
           />
         )}
       </Pressable>
@@ -24,10 +23,15 @@ const HeaderRight = () => {
 };
 
 export default function TabLayout() {
+  const pathname = usePathname();
+
   const { colorScheme } = useColorScheme();
-  const pathname = useSegments();
   const iconColor =
     colorScheme === 'dark' ? colors.blue[500] : colors.green[500];
+  const iconActiveColor =
+    colorScheme === 'dark' ? colors.red[500] : colors.purple[500];
+
+  // i18n
   const { t } = useTranslation();
 
   console.log('pathname', pathname);
@@ -42,7 +46,15 @@ export default function TabLayout() {
         name="(index)"
         options={{
           title: t('tabs.one'),
-          tabBarIcon: () => <Icon name="Hotel" color={iconColor} />,
+          tabBarActiveTintColor: 'red',
+          tabBarInactiveTintColor: 'blue',
+          tabBarIcon: () => (
+            <Icon
+              name="Hotel"
+              color={pathname === '/' ? iconActiveColor : iconColor}
+              strokeWidth={pathname === '/' ? 2 : 1}
+            />
+          ),
           headerRight: HeaderRight,
         }}
       />
@@ -50,14 +62,30 @@ export default function TabLayout() {
         name="two"
         options={{
           title: t('tabs.two'),
-          tabBarIcon: () => <Icon name="Map" color={iconColor} />,
+          tabBarActiveTintColor: 'red',
+          tabBarInactiveTintColor: 'blue',
+          tabBarIcon: () => (
+            <Icon
+              name="Map"
+              color={pathname === '/two' ? iconActiveColor : iconColor}
+              strokeWidth={pathname === '/two' ? 2 : 1}
+            />
+          ),
         }}
       />
       <Tabs.Screen
         name="settings"
         options={{
           title: t('tabs.settings'),
-          tabBarIcon: () => <Icon name="Cog" color={iconColor} />,
+          tabBarActiveTintColor: 'red',
+          tabBarInactiveTintColor: 'blue',
+          tabBarIcon: () => (
+            <Icon
+              name="Cog"
+              color={pathname === '/settings' ? iconActiveColor : iconColor}
+              strokeWidth={pathname === '/settings' ? 2 : 1}
+            />
+          ),
         }}
       />
     </Tabs>
