@@ -5,9 +5,14 @@ import { AppVersion } from '@components/ui/Device/AppVersion';
 import { Divider } from '@components/core/Divider/Divider';
 import { useColorScheme } from 'nativewind';
 import LanguagePicker from '@components/ui/Picker/LanguagePicker';
+import { useLogout } from '@hooks/auth/useLogout';
+import { router } from 'expo-router';
+import { useUser } from '@clerk/clerk-expo';
 
 export default function Settings() {
   const { colorScheme, setColorScheme } = useColorScheme();
+  const logOut = useLogout();
+  const user = useUser();
 
   return (
     <SafeAreaView>
@@ -25,6 +30,18 @@ export default function Settings() {
         <View className="pb-40">
           <LanguagePicker className="mx-auto" />
         </View>
+
+        {!user && (
+          <Text
+            onPress={() => {
+              logOut();
+              router.replace('/');
+            }}
+            className="text-black dark:text-white text-xl font-semibold text-center uppercase "
+          >
+            Log Out
+          </Text>
+        )}
 
         {/* Device Info Section */}
         <View>

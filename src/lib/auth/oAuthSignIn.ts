@@ -1,6 +1,6 @@
 import { OAuthFlow } from '@srcTypes/OAuth';
 
-export const OAuthSignIn = async ({ oAuthFlow }: { oAuthFlow: OAuthFlow }) => {
+export const OAuthSignIn = async (oAuthFlow: OAuthFlow) => {
   try {
     const { startOAuthFlow } = oAuthFlow;
     if (!startOAuthFlow) {
