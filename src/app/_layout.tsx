@@ -1,5 +1,5 @@
 /**
- * This is the main layout file for the application.
+ * This is the main entry/layout file for the application .
  * It is the first file that is loaded when the application starts.
  * It is responsible for setting up the application's theme, fonts, and other global settings.
  * It behaves really similar as Next.js layout. If you want to add shared logic this is the place for that
