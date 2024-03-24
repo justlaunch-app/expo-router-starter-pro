@@ -1,3 +1,10 @@
+/**
+ * Label component for web and native
+ * @module Label
+ * @param {TextProps} props - The props of the label.
+ * @return {React.FC<LabelProps>}
+ */
+
 import { useCallback } from 'react';
 import { useColorScheme } from 'nativewind';
 import { Text, Platform, TextProps } from 'react-native';

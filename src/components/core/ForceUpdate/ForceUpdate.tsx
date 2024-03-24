@@ -1,3 +1,11 @@
+/**
+ * ForceUpdate component checks for the latest version of the app and prompts the user to update if a new version is available.
+ *
+ * @module ForceUpdate
+ * @return {React.FC}
+ *
+ */
+
 import { useEffect, useState } from 'react';
 import { View, Platform } from 'react-native';
 import { ExternalLink } from '@components/core/Link/ExternalLink';

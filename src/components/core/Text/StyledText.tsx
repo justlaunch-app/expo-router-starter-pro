@@ -1,3 +1,11 @@
+/**
+ * StyledText component
+ *
+ * @module StyledText
+ * @param {StyledTextProps} props - The props of the StyledText.
+ * @return {React.FC<StyledTextProps>}
+ */
+
 import { ReactNode } from 'react';
 import { Text, TextProps } from 'react-native';
 import { useColorScheme } from 'nativewind';

@@ -1,3 +1,12 @@
+/**
+ * Divider component
+ *
+ * @module Divider
+ * @param {string} className - The class name of the divider.
+ * @return {React.FC}
+ *
+ */
+
 import { View } from 'react-native';
 import { cn } from '@lib/cn';
 

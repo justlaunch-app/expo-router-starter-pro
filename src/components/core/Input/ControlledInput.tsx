@@ -1,3 +1,13 @@
+/**
+ * ControlledInput
+ * @description A controlled input component that uses react-hook-form under the hood
+ *
+ * @module Input
+ * @param {ControlledInputProps} props - The props of the controlled input.
+ * @return {React.FC<ControlledInputProps>}
+ *
+ */
+
 import { useMemo } from 'react';
 import { View, TextInput, TextInputProps, Text } from 'react-native';
 import {
