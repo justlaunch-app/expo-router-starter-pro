@@ -30,12 +30,12 @@ type Theme = {
 export const DefaultTheme: Theme = {
   dark: false,
   colors: {
-    primary: colors.blue[500],
+    primary: colors.blue[900],
     background: colors.white,
     card: colors.white,
     text: colors.gray[900],
     border: colors.gray[200],
-    notification: colors.pink[500],
+    notification: colors.red[500],
     navigation: colors.blue[500],
     navigationActive: colors.blue[700],
   },
@@ -44,13 +44,13 @@ export const DefaultTheme: Theme = {
 export const DarkTheme: Theme = {
   dark: true,
   colors: {
-    primary: colors.blue[500],
+    primary: colors.white,
     background: colors.black,
     card: colors.gray[800],
     text: colors.white,
     border: colors.gray[700],
-    notification: colors.pink[500],
-    navigation: colors.blue[500],
+    notification: colors.red[400],
+    navigation: colors.blue[400],
     navigationActive: colors.blue[300],
   },
 };
