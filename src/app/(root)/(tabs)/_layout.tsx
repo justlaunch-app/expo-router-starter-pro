@@ -34,8 +34,6 @@ export default function TabLayout() {
   // i18n
   const { t } = useTranslation();
 
-  console.log('pathname', pathname);
-
   return (
     <Tabs
       screenOptions={{
