@@ -109,9 +109,9 @@ export default function IntroSteps() {
         onScroll={handleScroll}
         scrollEventThrottle={16}
       >
-        {onboarding.map((item) => (
+        {onboarding.map((item, index) => (
           <View
-            key={item.title}
+            key={index}
             className={`flex-1 justify-center items-center my-7.5`}
             style={{ width: SCREEN_WIDTH }}
           >
