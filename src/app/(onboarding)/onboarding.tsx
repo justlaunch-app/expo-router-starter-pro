@@ -18,6 +18,8 @@ import Device from 'expo-device';
 import { router } from 'expo-router';
 import { useAuth } from 'src/store/authStore/auth.store';
 import { requestTrackingPermissionsAsync } from 'expo-tracking-transparency';
+import { buttonClasses } from '@utils/buttonClasses';
+import { cn } from '@utils/cn';
 
 //ONBOARDING DATA
 import onboarding from '@assets/data/onboarding.json';
@@ -139,7 +141,10 @@ export default function IntroSteps() {
       </View>
       {activePageIndex < onboarding.length - 1 ? (
         <Pressable
-          className="absolute bottom-20 left-5 right-5 bg-teal-500 px-5 py-2.5 rounded-lg items-center"
+          className={cn(
+            'absolute bottom-20 left-5 right-5 bg-red-500',
+            buttonClasses
+          )}
           onPress={() => {
             if (scrollViewRef.current) {
               scrollViewRef.current.scrollTo({

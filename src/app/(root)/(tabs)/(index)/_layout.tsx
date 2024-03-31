@@ -26,7 +26,7 @@ export default function IndexTopTabsLayout() {
           colorScheme === 'dark'
             ? DarkTheme.colors.navigation
             : DefaultTheme.colors.navigation,
-        tabBarItemStyle: { width: SCREEN_WIDTH / 2 },
+        tabBarItemStyle: { width: SCREEN_WIDTH / 2 }, // 2 tabs (modify based on the number of tabs you have)
       }}
     />
   );
