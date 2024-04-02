@@ -1,3 +1,27 @@
+/**
+ * @fileoverview This file contains the onboarding screen for the app.
+ * It uses the onboarding data from the onboarding.json file to display
+ *
+ * The onboarding screen is a series of pages that the user can swipe through
+ * The user can swipe through the onboarding pages and click the "Next" button to move to the next page
+ * The user can also click the "Done" button on the last page to complete the onboarding
+ *
+ * The onboarding screen also requests location permission
+ * The onboarding screen also requests tracking permission
+ *
+ * @param {number} activePageIndex - The index of the current page
+ * @param {function} setActivePageIndex - A function to set the active page index
+ * @param {object} scrollViewRef - A reference to the scroll view
+ * @param {function} completeTutorial - A function to complete the tutorial
+ * @param {boolean} permissionRequested - A boolean to check if permission has been requested
+ * @param {boolean} locationPermissionDenied - A boolean to check if location permission has been denied
+ * @param {function} finishTutorial - A function to finish the tutorial
+ * @param {function} requestLocationPermission - A function to request location permission
+ * @param {function} handleScroll - A function to handle the scroll event
+ *
+ * @return {JSX.Element} - Returns the onboarding screen
+ */
+
 import { useState, useRef, useEffect } from 'react';
 import {
   View,
@@ -134,7 +158,7 @@ export default function IntroSteps() {
           <View
             key={index}
             className={`h-2.5 w-2.5 mx-1.5 rounded-full ${
-              index === activePageIndex ? 'bg-teal-500' : 'bg-gray-400'
+              index === activePageIndex ? 'bg-red-500' : 'bg-gray-400'
             }`}
           />
         ))}
@@ -158,7 +182,10 @@ export default function IntroSteps() {
         </Pressable>
       ) : (
         <Pressable
-          className="absolute bottom-20 left-5 right-5 bg-teal-500 px-5 py-2.5 rounded-lg items-center"
+          className={cn(
+            'absolute bottom-20 left-5 right-5 bg-red-500',
+            buttonClasses
+          )}
           onPress={finishTutorial}
         >
           <Text className="text-white font-bold">Done</Text>
