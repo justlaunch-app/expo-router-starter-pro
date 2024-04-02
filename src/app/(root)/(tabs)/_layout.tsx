@@ -3,7 +3,7 @@ import { Icon } from '@components/core/Icon/LucideIcon';
 import { Pressable } from 'react-native';
 import { useColorScheme } from 'nativewind';
 import { useTranslation } from 'react-i18next';
-import colors from 'tailwindcss/colors';
+import { DefaultTheme, DarkTheme } from '@utils/theme';
 
 const HeaderRight = () => {
   const { colorScheme } = useColorScheme();
@@ -24,12 +24,7 @@ const HeaderRight = () => {
 
 export default function TabLayout() {
   const pathname = usePathname();
-
   const { colorScheme } = useColorScheme();
-  const iconColor =
-    colorScheme === 'dark' ? colors.blue[500] : colors.green[500];
-  const iconActiveColor =
-    colorScheme === 'dark' ? colors.red[500] : colors.purple[500];
 
   // i18n
   const { t } = useTranslation();
@@ -37,7 +32,10 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: iconColor,
+        tabBarActiveTintColor:
+          colorScheme === 'dark'
+            ? DarkTheme.colors.navigation
+            : DefaultTheme.colors.navigation,
       }}
     >
       <Tabs.Screen
@@ -49,7 +47,11 @@ export default function TabLayout() {
           tabBarIcon: () => (
             <Icon
               name="Hotel"
-              color={pathname === '/' ? iconActiveColor : iconColor}
+              color={
+                pathname === '/'
+                  ? DarkTheme.colors.navigationActive
+                  : DefaultTheme.colors.navigationActive
+              }
               strokeWidth={pathname === '/' ? 2 : 1}
             />
           ),
@@ -65,7 +67,11 @@ export default function TabLayout() {
           tabBarIcon: () => (
             <Icon
               name="Map"
-              color={pathname === '/two' ? iconActiveColor : iconColor}
+              color={
+                pathname === '/two'
+                  ? DarkTheme.colors.navigationActive
+                  : DefaultTheme.colors.navigationActive
+              }
               strokeWidth={pathname === '/two' ? 2 : 1}
             />
           ),
@@ -80,7 +86,11 @@ export default function TabLayout() {
           tabBarIcon: () => (
             <Icon
               name="Cog"
-              color={pathname === '/settings' ? iconActiveColor : iconColor}
+              color={
+                pathname === '/settings'
+                  ? DarkTheme.colors.navigationActive
+                  : DefaultTheme.colors.navigationActive
+              }
               strokeWidth={pathname === '/settings' ? 2 : 1}
             />
           ),

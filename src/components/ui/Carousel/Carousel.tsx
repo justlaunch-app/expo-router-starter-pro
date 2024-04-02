@@ -8,12 +8,12 @@ import {
 } from 'react-native';
 import { viewportWidth, spacing } from '@lib/viewport';
 
-interface CarouselProps<T extends Array<unknown>> {
+type CarouselProps<T extends Array<unknown>> = {
   data: T;
   renderItem: ListRenderItem<T[number]>;
   showPagination?: boolean;
   className?: string;
-}
+};
 
 export const Carousel = <T extends Array<unknown>>({
   data,
@@ -42,21 +42,12 @@ export const Carousel = <T extends Array<unknown>>({
         horizontal
         pagingEnabled
         showsHorizontalScrollIndicator={false}
-        renderItem={(renderItemProps) => (
-          <View
-            style={{
-              paddingLeft: spacing * 0.5,
-              paddingRight: spacing * 0.5,
-            }}
-          >
-            <RenderItem {...renderItemProps} />
-          </View>
-        )}
+        renderItem={(renderItemProps) => <RenderItem {...renderItemProps} />}
         keyExtractor={(item, index) => index.toString()}
         onScroll={handleScroll}
       />
       {showPagination && (
-        <View className="flex-row justify-center mt-4">
+        <View className="flex-row justify-center">
           {data.map((_, index) => (
             <View
               key={index}
