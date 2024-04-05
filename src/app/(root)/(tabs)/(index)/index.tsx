@@ -33,6 +33,7 @@ export default function Index() {
             showPagination={true}
             renderItem={({ item }) => (
               <Link
+                href="/feed/[id]"
                 style={{
                   width: viewportWidth,
                 }}
