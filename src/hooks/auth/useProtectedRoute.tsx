@@ -39,13 +39,6 @@ export default function useProtectedRoute() {
       return;
     }
 
-    console.log('User:', user);
-    console.log('Tutorial Completed:', tutorialCompleted);
-    console.log('Segments:', segments);
-    console.log('Navigation Key:', navigationKey);
-    console.log('Is Guest Mode:', isGuestMode);
-    console.log('in auth group:', inAuthGroup);
-
     // Avoid redirects if user is a guest, allowing them to stay on the current page
     if (isGuestMode) {
       return;
