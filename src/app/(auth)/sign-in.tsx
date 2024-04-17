@@ -7,7 +7,7 @@ import { useAuth as zustandUseAuth } from 'src/store/authStore/auth.store';
 import { useTranslation } from 'react-i18next';
 import { signInSchema } from '@schemas/auth.schema';
 import { Label } from '@components/core/Label/StyledLabel';
-import { Alert } from '@components/core/Alert/Alert';
+import { Alert } from '@components/core/alert';
 import TouchableOpacity from '@components/core/Button/TouchableOpacity';
 import { useSignIn } from '@clerk/clerk-expo';
 import SignInWithOAuth from '@components/ui/OAuth/SignInWithOAuth';
