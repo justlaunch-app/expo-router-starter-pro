@@ -1,9 +1,9 @@
 import { Article } from '@srcTypes/Article';
 import { Link } from 'expo-router';
 import { View } from 'react-native';
-import FeedItem from './FeedItem';
+import FeedItem from './feed-item';
 
-export function FeedLink({ item }: { item: Article }) {
+export function FeedLink({ item }: Readonly<{ item: Article }>) {
   return (
     <View className="w-full">
       <View className="">

@@ -37,7 +37,7 @@ import { ThemeProvider } from '@react-navigation/native';
 import { DarkTheme, DefaultTheme } from '@lib/theme';
 
 //Authentication with Clerk
-import { AuthProvider } from '@context/AuthProvider';
+import { AuthProvider } from '@context/auth-provider';
 
 /**
  * Inject OneSignal - Only works with Expo Development Build

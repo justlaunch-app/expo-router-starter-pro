@@ -1,10 +1,10 @@
 import { SafeAreaView } from '@components/core/safe-area-view';
 import { Text, View } from 'react-native';
-import { DeviceInfo } from '@components/ui/Device/DeviceInfo';
-import { AppVersion } from '@components/ui/Device/AppVersion';
+import { DeviceInfo } from '@components/ui/device/device-info';
+import { AppVersion } from '@components/ui/device/app-version';
 import { Divider } from '@components/core/divider';
 import { useColorScheme } from 'nativewind';
-import LanguagePicker from '@components/ui/Picker/LanguagePicker';
+import LanguagePicker from '@components/ui/picker/language-picker';
 import { useLogout } from '@hooks/auth/useLogout';
 import { router } from 'expo-router';
 import { useUser } from '@clerk/clerk-expo';

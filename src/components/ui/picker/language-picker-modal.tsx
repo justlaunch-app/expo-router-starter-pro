@@ -3,9 +3,9 @@ import { StyledText as Text } from '@components/core/text/styled-text';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import IonIcons from '@expo/vector-icons/Ionicons';
 import { useTranslation } from 'react-i18next';
-import { AppVersion } from '@components/ui/Device/AppVersion';
+import { AppVersion } from '@components/ui/device/app-version';
 import { useColorScheme } from 'nativewind';
-import LanguagePicker from '@components/ui/Picker/LanguagePicker';
+import LanguagePicker from '@components/ui/picker/language-picker';
 
 export function LanguagePickerModal({
   visible,

@@ -10,7 +10,7 @@ import { Label } from '@components/core/label/styled-label';
 import { Alert } from '@components/core/alert';
 import TouchableOpacity from '@components/core/Button/TouchableOpacity';
 import { useSignIn } from '@clerk/clerk-expo';
-import SignInWithOAuth from '@components/ui/OAuth/SignInWithOAuth';
+import SignInWithOAuth from '@components/ui/sso/sign-in';
 import { SafeAreaView } from '@components/core/safe-area-view';
 import { Separator } from '@components/core/separator';
 import { buttonClasses } from '@lib/button-classes';

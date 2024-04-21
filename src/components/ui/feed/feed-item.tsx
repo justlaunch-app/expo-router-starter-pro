@@ -13,7 +13,7 @@ interface RenderItemProps {
   item: Article;
 }
 
-export default function FeedItem({ item }: RenderItemProps) {
+export default function FeedItem({ item }: Readonly<RenderItemProps>) {
   return (
     <View className="bg-blue-200 dark:bg-stone-300 divide-y divide-solid mb-4 px-2 py-3">
       <Text className="text-blue-800">{item.id}.</Text>
