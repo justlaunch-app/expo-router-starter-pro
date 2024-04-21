@@ -1,6 +1,6 @@
 import { View } from 'react-native';
-import { StyledText as Text } from '@components/core/Text/StyledText';
-import { SafeAreaView } from '@components/core/SafeAreaView/SafeAreaView';
+import { StyledText as Text } from '@components/core/text/styled-text';
+import { SafeAreaView } from '@components/core/safe-area-view';
 
 export default function TabTwoScreen() {
   return (

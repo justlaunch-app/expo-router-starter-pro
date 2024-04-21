@@ -4,7 +4,7 @@
  *
  */
 
-import { SafeAreaView } from '@components/core/SafeAreaView/SafeAreaView';
+import { SafeAreaView } from '@components/core/safe-area-view';
 import { MaterialTopTabs } from '@layouts/material-top-tabs';
 import useHeaderVisibility from '@hooks/useHeaderVisibility';
 import { SCREEN_WIDTH } from '@lib/deviceSize';

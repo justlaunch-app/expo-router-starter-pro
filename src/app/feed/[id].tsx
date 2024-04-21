@@ -1,12 +1,12 @@
 import { View, ScrollView } from 'react-native';
-import { StyledText as Text } from '@components/core/Text/StyledText';
+import { StyledText as Text } from '@components/core/text/styled-text';
 import { Image } from 'expo-image';
-import { SafeAreaView } from '@components/core/SafeAreaView/SafeAreaView';
+import { SafeAreaView } from '@components/core/safe-area-view';
 import { useLocalSearchParams, Stack } from 'expo-router';
 import { blurhash } from '@lib/blurhash';
 import * as Sharing from 'expo-sharing';
 import TouchableOpacity from '@components/core/Button/TouchableOpacity';
-import { Icon } from '@components/core/Icon/Icon';
+import { Icon } from '@components/core/icon/lucide';
 import { useColorScheme } from 'nativewind';
 
 const DetailFeed = () => {
@@ -27,7 +27,7 @@ const DetailFeed = () => {
                 }}
               >
                 <Icon
-                  name="share"
+                  name="Share"
                   size={24}
                   color={colorScheme === 'dark' ? 'white' : 'black'}
                 />

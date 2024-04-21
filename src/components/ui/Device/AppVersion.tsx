@@ -1,7 +1,7 @@
 import { View } from 'react-native';
 import { cn } from '@lib/cn';
 import appVersion from '@config/version';
-import { StyledText as Text } from '@components/core/Text/StyledText';
+import { StyledText as Text } from '@components/core/text/styled-text';
 
 export const AppVersion = () => {
   return (

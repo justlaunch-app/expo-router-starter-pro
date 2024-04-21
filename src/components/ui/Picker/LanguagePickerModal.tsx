@@ -1,5 +1,5 @@
 import { View, Modal, Pressable } from 'react-native';
-import { StyledText as Text } from '@components/core/Text/StyledText';
+import { StyledText as Text } from '@components/core/text/styled-text';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import IonIcons from '@expo/vector-icons/Ionicons';
 import { useTranslation } from 'react-i18next';

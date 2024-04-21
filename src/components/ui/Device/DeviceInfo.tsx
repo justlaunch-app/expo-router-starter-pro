@@ -1,7 +1,7 @@
 import { View } from 'react-native';
 import { cn } from '@lib/cn';
 import { deviceBrand, deviceName, deviceOS, deviceModel } from '@config/device';
-import { StyledText as Text } from '@components/core/Text/StyledText';
+import { StyledText as Text } from '@components/core/text/styled-text';
 
 export function DeviceInfo({ className }: Readonly<{ className?: string }>) {
   return (

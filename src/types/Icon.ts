@@ -2,7 +2,7 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { icons, LucideProps } from 'lucide-react-native';
 import { ColorValue } from 'react-native';
 
-export type IconProps = {
+export type FontawesomeIconProps = {
   name: React.ComponentProps<typeof FontAwesome>['name'];
   color: string;
   className?: string;

@@ -1,8 +1,8 @@
-import { SafeAreaView } from '@components/core/SafeAreaView/SafeAreaView';
+import { SafeAreaView } from '@components/core/safe-area-view';
 import { Text, View } from 'react-native';
 import { DeviceInfo } from '@components/ui/Device/DeviceInfo';
 import { AppVersion } from '@components/ui/Device/AppVersion';
-import { Divider } from '@components/core/Divider/Divider';
+import { Divider } from '@components/core/divider';
 import { useColorScheme } from 'nativewind';
 import LanguagePicker from '@components/ui/Picker/LanguagePicker';
 import { useLogout } from '@hooks/auth/useLogout';

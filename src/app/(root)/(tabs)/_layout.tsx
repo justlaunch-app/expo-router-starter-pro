@@ -1,5 +1,5 @@
 import { Link, Tabs, usePathname } from 'expo-router';
-import { Icon } from '@components/core/Icon/LucideIcon';
+import { Icon } from '@components/core/icon/lucide';
 import { Pressable } from 'react-native';
 import { useColorScheme } from 'nativewind';
 import { useTranslation } from 'react-i18next';

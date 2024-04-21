@@ -17,8 +17,8 @@
  */
 
 import { View } from 'react-native';
-import { StyledText as Text } from '@components/core/Text/StyledText';
-import { ExternalLink } from '@components/core/Link/ExternalLink';
+import { StyledText as Text } from '@components/core/text/styled-text';
+import { ExternalLink } from '@components/core/link/external-link';
 
 export default function NotificationModalScreen() {
   return (

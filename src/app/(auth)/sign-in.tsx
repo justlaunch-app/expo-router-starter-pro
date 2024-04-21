@@ -1,18 +1,18 @@
 import { View, Text } from 'react-native';
 import { router } from 'expo-router';
-import { ControlledInput } from '@components/core/Input/ControlledInput';
+import { ControlledInput } from '@components/core/input/controlled-input';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useAuth as zustandUseAuth } from 'src/store/authStore/auth.store';
 import { useTranslation } from 'react-i18next';
 import { signInSchema } from '@schemas/auth.schema';
-import { Label } from '@components/core/Label/StyledLabel';
+import { Label } from '@components/core/label/styled-label';
 import { Alert } from '@components/core/alert';
 import TouchableOpacity from '@components/core/Button/TouchableOpacity';
 import { useSignIn } from '@clerk/clerk-expo';
 import SignInWithOAuth from '@components/ui/OAuth/SignInWithOAuth';
-import { SafeAreaView } from '@components/core/SafeAreaView/SafeAreaView';
-import { Separator } from '@components/core/Separator/Separator';
+import { SafeAreaView } from '@components/core/safe-area-view';
+import { Separator } from '@components/core/separator';
 import { buttonClasses } from '@lib/buttonClasses';
 import { cn } from '@lib/cn';
 

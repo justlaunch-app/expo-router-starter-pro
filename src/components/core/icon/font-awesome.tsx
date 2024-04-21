@@ -17,9 +17,9 @@
  */
 
 import { FontAwesome } from '@expo/vector-icons';
-import { IconProps } from '@srcTypes/Icon';
+import { FontawesomeIconProps } from '@srcTypes/Icon';
 
-export const Icon = (props: IconProps) => {
+export const Icon = (props: FontawesomeIconProps) => {
   return (
     <FontAwesome className={props.className} size={props.size} {...props} />
   );

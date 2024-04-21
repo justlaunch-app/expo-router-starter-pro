@@ -35,7 +35,7 @@ import {
   Platform,
   NativeScrollEvent,
 } from 'react-native';
-import { SafeAreaView } from '@components/core/SafeAreaView/SafeAreaView';
+import { SafeAreaView } from '@components/core/safe-area-view';
 import { SCREEN_WIDTH } from '@lib/deviceSize';
 import * as Location from 'expo-location';
 import Device from 'expo-device';

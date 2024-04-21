@@ -20,18 +20,18 @@
  * />
  */
 
-import { Icon } from '@components/core/Icon/Icon';
+import { Icon } from '@components/core/icon/lucide';
 import { Text } from 'react-native';
 import TouchableOpacity from '@components/core/Button/TouchableOpacity';
 import { cn } from '@lib/cn';
 import { OAuthSignIn } from '@lib/auth/oAuthSignIn';
 import { OAuthStrategy } from '@srcTypes/OAuth';
-import { IconProps } from '@srcTypes/Icon';
+import { LucideIconProps } from '@srcTypes/Icon';
 import { useOAuth } from '@clerk/clerk-expo';
 
 interface SSOButtonProps {
   classNames?: string;
-  icon: IconProps;
+  icon: LucideIconProps;
   strategy: OAuthStrategy;
   textColor?: string;
 }
