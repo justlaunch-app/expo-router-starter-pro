@@ -2,7 +2,7 @@ import { Text, View } from 'react-native';
 import { useAuth } from 'src/store/authStore/auth.store';
 import { Carousel } from '@components/ui/carousel';
 import { ExternalLink as Link } from '@components/core/link/external-link';
-import { Header } from '@components/ui/header';
+import { UserHeader as Header } from '@components/ui/header/user-header';
 import feed from '@assets/data/feed.json';
 import { viewportWidth } from '@lib/viewport';
 

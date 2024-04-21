@@ -1,6 +1,6 @@
 import * as WebBrowser from 'expo-web-browser';
 import { View } from 'react-native';
-import { SSOButton } from '@components/core/Button/SSO';
+import { SSOButton as Button } from '@components/core/button/sso';
 import { useWarmUpBrowser } from '@hooks/auth/useWarmUpBrowser';
 
 WebBrowser.maybeCompleteAuthSession();
@@ -10,11 +10,11 @@ const SignInWithOAuth = () => {
 
   return (
     <View className="flex flex-col gap-2">
-      <SSOButton
+      <Button
         strategy="oauth_google"
         icon={{ name: 'google', color: 'white' }}
       />
-      <SSOButton
+      <Button
         classNames="dark:bg-white bg-black"
         strategy="oauth_twitter"
         icon={{ name: 'twitter', color: 'white' }}

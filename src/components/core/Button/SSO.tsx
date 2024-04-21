@@ -22,7 +22,7 @@
 
 import { Icon } from '@components/core/icon/font-awesome';
 import { Text } from 'react-native';
-import TouchableOpacity from '@components/core/Button/TouchableOpacity';
+import { TouchableOpacity } from '@components/core/button/touchable-opacity';
 import { cn } from '@lib/cn';
 import { OAuthSignIn } from '@lib/auth/o-auth-sign-in';
 import { OAuthStrategy } from '@srcTypes/OAuth';

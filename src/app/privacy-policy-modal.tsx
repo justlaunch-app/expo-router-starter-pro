@@ -2,7 +2,8 @@ import { ScrollView, View } from 'react-native';
 import { SafeAreaView } from '@components/core/safe-area-view';
 import { StyledText as Text } from '@components/core/text/styled-text';
 import { useRouter } from 'expo-router';
-import { Button } from '@components/core/Button/Button';
+import { PageHeader as Header } from '@components/ui/header/page-header';
+import { Button } from '@components/core/button/base-button';
 
 export default function Terms({
   businessEmail,
@@ -11,6 +12,7 @@ export default function Terms({
 
   return (
     <SafeAreaView>
+      <Header title="Privacy Policy" />
       <ScrollView className="pb-20">
         <View>
           <Text>

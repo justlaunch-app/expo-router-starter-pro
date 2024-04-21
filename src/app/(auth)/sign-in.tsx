@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { signInSchema } from '@schemas/auth.schema';
 import { Label } from '@components/core/label/styled-label';
 import { Alert } from '@components/core/alert';
-import TouchableOpacity from '@components/core/Button/TouchableOpacity';
+import { TouchableOpacity } from '@components/core/button/touchable-opacity';
 import { useSignIn } from '@clerk/clerk-expo';
 import SignInWithOAuth from '@components/ui/sso/sign-in';
 import { SafeAreaView } from '@components/core/safe-area-view';

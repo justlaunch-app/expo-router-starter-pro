@@ -20,7 +20,7 @@ const APP_STORE_LINK = 'https://apps.apple.com/app/idYOUR_APP_ID';
 const PLAY_STORE_LINK =
   'https://play.google.com/store/apps/details?id=YOUR_PACKAGE_NAME';
 
-const ForceUpdate = () => {
+export default function ForceUpdate() {
   const [isUpdateRequired, setIsUpdateRequired] = useState(false);
   const storeLink = Platform.OS === 'ios' ? APP_STORE_LINK : PLAY_STORE_LINK;
 
@@ -58,6 +58,4 @@ const ForceUpdate = () => {
       </ExternalLink>
     </View>
   );
-};
-
-export default ForceUpdate;
+}

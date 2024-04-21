@@ -5,7 +5,7 @@ import { SafeAreaView } from '@components/core/safe-area-view';
 import { useLocalSearchParams, Stack } from 'expo-router';
 import { blurhash } from '@lib/blurhash';
 import * as Sharing from 'expo-sharing';
-import TouchableOpacity from '@components/core/Button/TouchableOpacity';
+import { TouchableOpacity } from '@components/core/button/touchable-opacity';
 import { Icon } from '@components/core/icon/lucide';
 import { useColorScheme } from 'nativewind';
 

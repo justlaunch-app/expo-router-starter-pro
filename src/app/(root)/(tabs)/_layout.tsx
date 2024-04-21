@@ -9,7 +9,7 @@ const HeaderRight = () => {
   const { colorScheme } = useColorScheme();
 
   return (
-    <Link href="/notification-modal" asChild className="pr-3">
+    <Link href="/privacy-policy-modal" asChild className="pr-3">
       <Pressable>
         {() => (
           <Icon

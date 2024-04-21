@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import { useUser, useUserIsSignedIn } from '@hooks/auth/useUser';
 
-export const Header = () => {
+export const UserHeader = () => {
   const user = useUser();
 
   if (!useUserIsSignedIn()) {

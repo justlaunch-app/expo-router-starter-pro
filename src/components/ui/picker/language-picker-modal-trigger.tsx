@@ -1,4 +1,4 @@
-import { IconButton } from '@components/core/Button/IconButton';
+import { IconButton } from '@components/core/button/IconButton';
 import { useEffect } from 'react';
 import { useLangModal } from 'src/store/langStore/lang-picker-modal.store';
 import IonIcons from '@expo/vector-icons/Ionicons';

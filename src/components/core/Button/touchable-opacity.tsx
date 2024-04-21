@@ -35,7 +35,7 @@ type PressableComponentProps = {
   className?: string;
 };
 
-const PressableComponent: FC<PressableComponentProps> = ({
+export const TouchableOpacity: FC<PressableComponentProps> = ({
   onPress,
   style,
   children,
@@ -53,5 +53,3 @@ const PressableComponent: FC<PressableComponentProps> = ({
     </Pressable>
   );
 };
-
-export default PressableComponent;
