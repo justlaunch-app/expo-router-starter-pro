@@ -6,9 +6,6 @@
 
 import { MaterialTopTabs } from '@layouts/material-top-tabs';
 import { SCREEN_WIDTH } from '@lib/device-size';
-
-// Tailwindcss - Colors
-//Tailwindcss - Colors
 import { DefaultTheme, DarkTheme } from '@utils/theme';
 import { useColorScheme } from 'nativewind';
 
