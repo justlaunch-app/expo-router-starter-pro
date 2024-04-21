@@ -7,7 +7,7 @@
 import { SafeAreaView } from '@components/core/safe-area-view';
 import { MaterialTopTabs } from '@layouts/material-top-tabs';
 import useHeaderVisibility from '@hooks/useHeaderVisibility';
-import { SCREEN_WIDTH } from '@lib/deviceSize';
+import { SCREEN_WIDTH } from '@lib/device-size';
 
 //Tailwindcss - Colors
 import { DefaultTheme, DarkTheme } from '@utils/theme';

@@ -15,7 +15,7 @@
 
 import React from 'react';
 import { ClerkProvider } from '@clerk/clerk-expo';
-import { tokenCache } from '@lib/tokenCache';
+import { tokenCache } from '@lib/token-cache';
 
 /*
  * AuthProvider Component

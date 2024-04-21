@@ -36,13 +36,13 @@ import {
   NativeScrollEvent,
 } from 'react-native';
 import { SafeAreaView } from '@components/core/safe-area-view';
-import { SCREEN_WIDTH } from '@lib/deviceSize';
+import { SCREEN_WIDTH } from '@lib/device-size';
 import * as Location from 'expo-location';
 import Device from 'expo-device';
 import { router } from 'expo-router';
 import { useAuth } from 'src/store/authStore/auth.store';
 import { requestTrackingPermissionsAsync } from 'expo-tracking-transparency';
-import { buttonClasses } from '@utils/buttonClasses';
+import { buttonClasses } from '@utils/button-classes';
 import { cn } from '@utils/cn';
 
 //ONBOARDING DATA

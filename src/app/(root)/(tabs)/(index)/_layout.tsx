@@ -5,7 +5,7 @@
  */
 
 import { MaterialTopTabs } from '@layouts/material-top-tabs';
-import { SCREEN_WIDTH } from '@lib/deviceSize';
+import { SCREEN_WIDTH } from '@lib/device-size';
 
 // Tailwindcss - Colors
 //Tailwindcss - Colors

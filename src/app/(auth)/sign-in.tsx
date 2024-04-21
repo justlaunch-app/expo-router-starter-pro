@@ -13,7 +13,7 @@ import { useSignIn } from '@clerk/clerk-expo';
 import SignInWithOAuth from '@components/ui/OAuth/SignInWithOAuth';
 import { SafeAreaView } from '@components/core/safe-area-view';
 import { Separator } from '@components/core/separator';
-import { buttonClasses } from '@lib/buttonClasses';
+import { buttonClasses } from '@lib/button-classes';
 import { cn } from '@lib/cn';
 
 export default function SignIn() {
