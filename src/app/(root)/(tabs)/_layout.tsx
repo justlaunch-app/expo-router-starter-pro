@@ -9,11 +9,11 @@ const HeaderRight = () => {
   const { colorScheme } = useColorScheme();
 
   return (
-    <Link href="/modal" asChild className="pr-2">
+    <Link href="/notification-modal" asChild className="pr-3">
       <Pressable>
         {() => (
           <Icon
-            name="Star"
+            name="Bell"
             color={colorScheme === 'dark' ? 'white' : 'black'}
           />
         )}
