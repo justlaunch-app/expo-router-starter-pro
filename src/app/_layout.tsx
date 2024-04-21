@@ -108,6 +108,12 @@ function RootLayoutNav() {
                     presentation: 'modal',
                   }}
                 />
+                <Stack.Screen
+                  name="privacy-policy-modal"
+                  options={{
+                    presentation: 'modal',
+                  }}
+                />
               </Stack>
               <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
             </SafeAreaProvider>
