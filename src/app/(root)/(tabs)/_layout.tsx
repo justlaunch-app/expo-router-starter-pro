@@ -1,101 +1,52 @@
-import { Link, Tabs, usePathname } from 'expo-router';
-import { Icon } from '@components/core/icon/lucide';
+// import { useTranslation } from 'react-i18next';
+import { Link, Tabs } from 'expo-router';
 import { Pressable } from 'react-native';
 import { useColorScheme } from 'nativewind';
-import { useTranslation } from 'react-i18next';
-import { DefaultTheme, DarkTheme } from '@utils/theme';
-
-const HeaderRight = () => {
-  const { colorScheme } = useColorScheme();
-
-  return (
-    <Link href="/privacy-policy-modal" asChild className="pr-3">
-      <Pressable>
-        {() => (
-          <Icon
-            name="Bell"
-            color={colorScheme === 'dark' ? 'white' : 'black'}
-          />
-        )}
-      </Pressable>
-    </Link>
-  );
-};
+import { TabBarIcon } from '@/components/core/icon';
 
 export default function TabLayout() {
-  const pathname = usePathname();
   const { colorScheme } = useColorScheme();
-
-  // i18n
-  const { t } = useTranslation();
+  //TOOD: add translations here
+  // const { t } = useTranslation();
+  const iconColor = colorScheme === 'dark' ? 'white' : 'black';
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor:
-          colorScheme === 'dark'
-            ? DarkTheme.colors.navigation
-            : DefaultTheme.colors.navigation,
+        tabBarActiveTintColor: iconColor,
       }}
     >
       <Tabs.Screen
         name="(index)"
         options={{
-          title: t('tabs.one'),
-          tabBarActiveTintColor: 'red',
-          tabBarInactiveTintColor: 'blue',
-          tabBarIcon: () => (
-            <Icon
-              name="Hotel"
-              color={
-                pathname === '/'
-                  ? DarkTheme.colors.navigationActive
-                  : DefaultTheme.colors.navigationActive
-              }
-              strokeWidth={pathname === '/' ? 2 : 1}
-            />
-          ),
+          title: 'Home',
+          tabBarIcon: () => <TabBarIcon name="code" pathnames={['/', '/feed']} />,
           headerRight: HeaderRight,
         }}
       />
       <Tabs.Screen
         name="two"
         options={{
-          title: t('tabs.two'),
-          tabBarActiveTintColor: 'red',
-          tabBarInactiveTintColor: 'blue',
-          tabBarIcon: () => (
-            <Icon
-              name="Map"
-              color={
-                pathname === '/two'
-                  ? DarkTheme.colors.navigationActive
-                  : DefaultTheme.colors.navigationActive
-              }
-              strokeWidth={pathname === '/two' ? 2 : 1}
-            />
-          ),
+          title: 'Tab Two',
+          headerShown: false,
+          tabBarIcon: () => <TabBarIcon name="code" pathnames={['/two']} />,
         }}
       />
       <Tabs.Screen
         name="settings"
         options={{
-          title: t('tabs.settings'),
-          tabBarActiveTintColor: 'red',
-          tabBarInactiveTintColor: 'blue',
-          tabBarIcon: () => (
-            <Icon
-              name="Cog"
-              color={
-                pathname === '/settings'
-                  ? DarkTheme.colors.navigationActive
-                  : DefaultTheme.colors.navigationActive
-              }
-              strokeWidth={pathname === '/settings' ? 2 : 1}
-            />
-          ),
+          title: 'Settings',
+          tabBarIcon: () => <TabBarIcon name="cog" pathnames={['/settings']} />,
         }}
       />
     </Tabs>
   );
 }
+
+const HeaderRight = () => {
+  return (
+    <Link className="mr-3" href="/modal" asChild>
+      <Pressable>{() => <TabBarIcon name="rocket" />}</Pressable>
+    </Link>
+  );
+};

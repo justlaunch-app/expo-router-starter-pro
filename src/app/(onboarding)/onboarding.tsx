@@ -42,8 +42,8 @@ import Device from 'expo-device';
 import { router } from 'expo-router';
 import { useAuth } from 'src/store/authStore/auth.store';
 import { requestTrackingPermissionsAsync } from 'expo-tracking-transparency';
-import { buttonClasses } from '@utils/button-classes';
-import { cn } from '@utils/cn';
+import { buttonClasses } from '@lib/button-classes';
+import { cn } from '@lib/cn';
 
 //ONBOARDING DATA
 import onboarding from '@assets/data/onboarding.json';
@@ -53,8 +53,7 @@ export default function IntroSteps() {
   const scrollViewRef = useRef<ScrollView>(null);
   const completeTutorial = useAuth((state) => state.completeTutorial);
   const [permissionRequested, setPermissionRequested] = useState(false);
-  const [locationPermissionDenied, setLocationPermissionDenied] =
-    useState(false);
+  const [locationPermissionDenied, setLocationPermissionDenied] = useState(false);
 
   const finishTutorial = () => {
     completeTutorial();
@@ -118,9 +117,7 @@ export default function IntroSteps() {
   }, [activePageIndex, locationPermissionDenied]);
 
   const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-    const newPageIndex = Math.round(
-      event.nativeEvent.contentOffset.x / SCREEN_WIDTH
-    );
+    const newPageIndex = Math.round(event.nativeEvent.contentOffset.x / SCREEN_WIDTH);
     setActivePageIndex(newPageIndex);
   };
 
@@ -143,12 +140,8 @@ export default function IntroSteps() {
           >
             <Image className="w-full h-3/5" resizeMode="cover" />
             <View className="px-5">
-              <Text className="text-4xl font-bold text-black text-center mb-2.5">
-                {item.title}
-              </Text>
-              <Text className="text-lg text-black text-center mb-2.5">
-                {item.description}
-              </Text>
+              <Text className="text-4xl font-bold text-black text-center mb-2.5">{item.title}</Text>
+              <Text className="text-lg text-black text-center mb-2.5">{item.description}</Text>
             </View>
           </View>
         ))}
@@ -165,10 +158,7 @@ export default function IntroSteps() {
       </View>
       {activePageIndex < onboarding.length - 1 ? (
         <Pressable
-          className={cn(
-            'absolute bottom-20 left-5 right-5 bg-red-500',
-            buttonClasses
-          )}
+          className={cn('absolute bottom-20 left-5 right-5 bg-red-500', buttonClasses)}
           onPress={() => {
             if (scrollViewRef.current) {
               scrollViewRef.current.scrollTo({
@@ -182,10 +172,7 @@ export default function IntroSteps() {
         </Pressable>
       ) : (
         <Pressable
-          className={cn(
-            'absolute bottom-20 left-5 right-5 bg-red-500',
-            buttonClasses
-          )}
+          className={cn('absolute bottom-20 left-5 right-5 bg-red-500', buttonClasses)}
           onPress={finishTutorial}
         >
           <Text className="text-white font-bold">Done</Text>

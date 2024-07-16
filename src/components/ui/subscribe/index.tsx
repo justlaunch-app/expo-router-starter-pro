@@ -1,23 +1,15 @@
 import React from 'react';
 import { Linking, StyleSheet } from 'react-native';
-import { StyledText as Text } from '@components/core/text/styled-text';
-import { Icon } from '@components/core/icon/lucide';
+import { Text } from '@components/core/text';
+import { Icon } from '@components/core/icon';
 import { TouchableOpacity } from '@components/core/button/touchable-opacity';
-import Animated, {
-  useSharedValue,
-  useAnimatedStyle,
-  withTiming,
-} from 'react-native-reanimated';
+import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
-export default function Subscribe({
-  onClose,
-}: Readonly<{ onClose: () => void }>) {
+export default function Subscribe({ onClose }: Readonly<{ onClose: () => void }>) {
   const translateY = useSharedValue(100);
   const animatedStyle = useAnimatedStyle(() => {
     return {
-      transform: [
-        { translateY: withTiming(translateY.value, { duration: 500 }) },
-      ],
+      transform: [{ translateY: withTiming(translateY.value, { duration: 500 }) }],
     };
   });
 
@@ -43,10 +35,7 @@ export default function Subscribe({
 
   return (
     <Animated.View style={[styles.container, animatedStyle]}>
-      <TouchableOpacity
-        onPress={handleNewsletterPress}
-        style={[styles.titleContainer]}
-      >
+      <TouchableOpacity onPress={handleNewsletterPress} style={[styles.titleContainer]}>
         <Text style={styles.title}>
           <Text style={styles.underline}>Subscribe to our newsletter</Text>
           <Text> and get a 10% off discount code.</Text>
@@ -54,7 +43,7 @@ export default function Subscribe({
       </TouchableOpacity>
 
       <TouchableOpacity style={[styles.iconContainer]} onPress={exitAnimation}>
-        <Icon name="X" size={24} />
+        <Icon name="twitter" size={24} />
       </TouchableOpacity>
     </Animated.View>
   );

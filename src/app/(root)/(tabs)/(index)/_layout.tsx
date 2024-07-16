@@ -6,23 +6,11 @@
 
 import { MaterialTopTabs } from '@layouts/material-top-tabs';
 import { SCREEN_WIDTH } from '@lib/device-size';
-import { DefaultTheme, DarkTheme } from '@utils/theme';
-import { useColorScheme } from 'nativewind';
 
 export default function IndexTopTabsLayout() {
-  const { colorScheme } = useColorScheme();
-
   return (
     <MaterialTopTabs
       screenOptions={{
-        tabBarActiveTintColor:
-          colorScheme === 'dark'
-            ? DarkTheme.colors.navigationActive
-            : DefaultTheme.colors.navigationActive,
-        tabBarInactiveTintColor:
-          colorScheme === 'dark'
-            ? DarkTheme.colors.navigation
-            : DefaultTheme.colors.navigation,
         tabBarItemStyle: { width: SCREEN_WIDTH / 2 }, // 2 tabs (modify based on the number of tabs you have)
       }}
     />

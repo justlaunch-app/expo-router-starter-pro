@@ -1,64 +1,40 @@
-import { View, ScrollView } from 'react-native';
-import { StyledText as Text } from '@components/core/text/styled-text';
+import { View } from 'react-native';
+import { Text } from '@/components/core/text';
 import { Image } from 'expo-image';
-import { SafeAreaView } from '@components/core/safe-area-view';
-import { useLocalSearchParams, Stack } from 'expo-router';
-import { blurhash } from '@lib/blurhash';
-import * as Sharing from 'expo-sharing';
-import { TouchableOpacity } from '@components/core/button/touchable-opacity';
-import { Icon } from '@components/core/icon/lucide';
-import { useColorScheme } from 'nativewind';
+import { ParallaxScrollView } from '@/components/core/parallax-scroll-view';
+import { useLocalSearchParams } from 'expo-router';
+import { blurhash } from '@/lib/blurhash';
 
-const DetailFeed = () => {
-  const { id, author, imgSrc, title, datePublished, content } =
-    useLocalSearchParams();
-  const { colorScheme } = useColorScheme();
+export default function DetailFeed() {
+  const { title, description, imageUrl, date, author } = useLocalSearchParams();
 
   return (
-    <SafeAreaView>
-      <ScrollView>
-        <Stack.Screen
-          options={{
-            headerTitle: `FEED ${id}`,
-            headerRight: () => (
-              <TouchableOpacity
-                onPress={() => {
-                  Sharing.shareAsync('https://linktr.zoltanfodor.dev/');
-                }}
-              >
-                <Icon
-                  name="Share"
-                  size={24}
-                  color={colorScheme === 'dark' ? 'white' : 'black'}
-                />
-              </TouchableOpacity>
-            ),
-          }}
-        />
+    <ParallaxScrollView
+      headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
+      headerImage={
         <Image
-          className="h-[25vh] w-screen mx-auto"
-          source={imgSrc}
-          placeholder={blurhash}
+          style={{ flex: 1, width: '100%', backgroundColor: '#0553' }}
+          source={imageUrl}
+          placeholder={{ blurhash }}
           contentFit="cover"
           transition={1000}
         />
-        <View className="px-4 pt-5 mx-auto w-screen">
-          <Text className="text-2xl uppercase text-orange-500 dark:text-purple-600">
-            DetailFeed
+      }
+    >
+      <View className="px-1 pt-2">
+        <Text variant="largeTitle">{title}</Text>
+        <Text variant="callout" className="pt-2">
+          {description}
+        </Text>
+        <View className="flex flex-row items-center justify-between">
+          <Text variant="caption1" className="pt-2 font-semibold italic">
+            {date}
           </Text>
-          <Text className="py-4 text-xl font-bold dark:text-white">
-            ID: {id}
+          <Text variant="caption1" className="pt-2 font-extrabold uppercase">
+            {author}
           </Text>
-          <Text className="italic text-lg py-4 dark:text-white">{title}</Text>
-          <Text className="text-lg dark:text-white">{author}</Text>
-          <Text className="italic py-4 text-green-500 dark:text-white">
-            Created: {datePublished}
-          </Text>
-          <Text className="px-4 pt-4 dark:text-white">{content}</Text>
         </View>
-      </ScrollView>
-    </SafeAreaView>
+      </View>
+    </ParallaxScrollView>
   );
-};
-
-export default DetailFeed;
+}
