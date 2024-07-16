@@ -12,20 +12,7 @@
     "baseUrl": "./",
     "jsx": "react-jsx",
     "paths": {
-      "@app/*": ["src/app/*"],
-      "@assets/*": ["src/assets/*"],
-      "@components/*": ["src/components/*"],
-      "@constants/*": ["src/constants/*"],
-      "@context/*": ["src/context/*"],
-      "@locales/*": ["src/locales/*"],
-      "@utils/*": ["src/lib/*"],
-      "@lib/*": ["src/lib/*"],
-      "@layouts/*": ["src/layouts/*"],
-      "@config/*": ["src/config/*"],
-      "@services/*": ["src/services/*"],
-      "@srcTypes/*": ["src/types/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@schemas/*": ["src/schemas/*"]
+      "@/*": ["./src/*"]
     }
   }
 }

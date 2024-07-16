@@ -1,11 +1,11 @@
 module.exports = {
   expo: {
-    name: 'justlaunch.app - expo-router-pro-starter',
+    name: 'expo-router-starter-pro-ts',
     experiments: {
       typedRoutes: true,
       tsconfigPaths: true,
     },
-    slug: 'expo-router-pro-starter',
+    slug: 'expo-router-starter-pro-ts',
     version: '1.1.1',
     orientation: 'portrait',
     icon: './public/favicon-32x32.png',
@@ -23,13 +23,13 @@ module.exports = {
     assetBundlePatterns: ['**/*'],
     ios: {
       supportsTablet: true,
-      bundleIdentifier: 'com.zoltanfodor.test-expo-router-now'
+      bundleIdentifier: 'com.vador.expo-router-starter-pro-ts'
     },
     infoPlist: {
       ITSAppUsesNonExemptEncryption: false,
     },
     android: {
-      package: 'com.zoltanfodor_dev.expostarterkit',
+      package: 'com.vador.expo-router-starter-pro-ts',
       adaptiveIcon: {
         foregroundImage: './public/android-chrome-192x192.png',
         backgroundColor: '#ffffff',
